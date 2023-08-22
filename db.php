@@ -1,0 +1,1 @@
+<?php $db = mysqli_connect('localhost','root','','seguinon_db',3306) or die('Error connecting to MySQL server.'); ?>
