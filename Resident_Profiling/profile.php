@@ -390,11 +390,11 @@ $res_father=$res_idFa;
         <div class="clearfix"></div>
 <div class="bot-border"></div>
 
-<div class="col-sm-5 col-xs-6 tital " >Height:</div><div class="col-sm-7 col-xs-6 "><?php echo  $db_res_height;?></div>
+<div class="col-sm-5 col-xs-6 tital " >Height:</div><div class="col-sm-7 col-xs-6 "><?php echo  $db_res_height . " cm";;?></div>
      <div class="clearfix"></div>
 <div class="bot-border"></div>
 
-<div class="col-sm-5 col-xs-6 tital " >Weight:</div><div class="col-sm-7 col-xs-6 "><?php echo  $db_res_weight;?></div>
+<div class="col-sm-5 col-xs-6 tital " >Weight:</div><div class="col-sm-7 col-xs-6 "><?php echo  $db_res_weight . " kg";;?></div>
      <div class="clearfix"></div>
 <div class="bot-border"></div>
 
@@ -408,7 +408,7 @@ $res_father=$res_idFa;
         <div class="clearfix"></div>
 <div class="bot-border"></div>
 
-<div class="col-sm-5 col-xs-6 tital " >Address:</div><div class="col-sm-7"><?php echo $db_res_house .", ".$db_res_street." Street, ".", Salcedo, Eastern Samar";?></div>
+<div class="col-sm-5 col-xs-6 tital " >Address:</div><div class="col-sm-7"><?php echo $db_res_house .", ".$db_res_street." Street".", Salcedo, Eastern Samar";?></div>
         
         <div class="clearfix"></div>
 <div class="bot-border"></div>

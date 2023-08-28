@@ -27,13 +27,14 @@ if (isset($_SESSION['id'])) {
 					if (x.type === "password") {
 						x.type = "text";
 					} else {
-						x.type = "Passwordrd";
+						x.type = "password";
 					}
 				}
 			</script>
 		</form>
 	</div>
-<?php
+	<?php
+
 include('db.php');
 
 if (isset($_POST['submit'])) {
@@ -45,43 +46,33 @@ if (isset($_POST['submit'])) {
 
 	if ($count > 0) {
 		$accnt = mysqli_fetch_array($qry);
-		$pass=$accnt['Password'];
-
+		$pass = $accnt['Password'];
 		
-		$_SESSION['id'] = $accnt['ID'];
-
-
-		if($pass==$password && $username==$username){
-				
-		$pos = $accnt['position_id'];
-				$position=$accnt['Position'];
-				$committee=$accnt['Committee'];
-				$fullname = $accnt['Fullname'];
-				$_SESSION['LOGIN_STATUS'] = true;
-				$_SESSION['position'] = $position;
-				$_SESSION['USER'] = $username;
-				$_SESSION['committee'] = $committee;
-				$_SESSION['password'] = $password;
-				$_SESSION['Emailaddress'] = $count['Emailaddress'];
-				$_SESSION['device_Id'] = $count['device_Id'];
-				$_SESSION['positionID'] = $pos;
-				$_SESSION['fullname'] = $fullname;
-				$_SESSION['position_id'] = $accnt['position_id'];
-				echo "<script>alert('Welcome.');</script>";
-				echo '<script>window.location = "home.php";</script>';
-
-
+		// Check if the entered password matches the stored password
+		if ($pass == $password) {
+			$_SESSION['id'] = $accnt['ID'];
+			$position = $accnt['Position'];
+			$committee = $accnt['Committee'];
+			$fullname = $accnt['Fullname'];
+			$_SESSION['LOGIN_STATUS'] = true;
+			$_SESSION['position'] = $position;
+			$_SESSION['USER'] = $username;
+			$_SESSION['committee'] = $committee;
+			$_SESSION['password'] = $password;
+			$_SESSION['Emailaddress'] = $accnt['Emailaddress']; // Use 'accnt' instead of 'count'
+			$_SESSION['device_Id'] = $accnt['device_Id']; // Use 'accnt' instead of 'count'
+			$_SESSION['positionID'] = $accnt['position_id'];
+			$_SESSION['fullname'] = $fullname;
+			$_SESSION['position_id'] = $accnt['position_id'];
+			echo "<script>alert('Welcome.');</script>";
+			echo '<script>window.location = "home.php";</script>';
+		} else {
+			echo "<script>alert('Incorrect Password.');</script>";
 		}
-		else {
-		echo "<script>alert('Incorrect Password.');</script>";
-		}
-
+	} else {
+		echo "<script>alert('Invalid username.');</script>";
 	}
-	else {
-	echo "<script>alert('Invalid username.');</script>";
-	}
-
-} 
+}
 ?>
 
 </body>

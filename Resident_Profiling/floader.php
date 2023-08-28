@@ -206,30 +206,13 @@ $db_res_country = $row["country_ID"];
   $view_query = mysqli_query($db, "SELECT * FROM resident_address where res_ID='$largestNumber'");
 
   while($row = mysqli_fetch_assoc($view_query)){
-    
-
-$db_res_unit = $row["address_Unit_Room_Floor_num"];
-      $db_res_build = $row["address_BuildingName"];
-      $db_res_lot = $row["address_Lot_No"];
-      $db_res_block = $row["address_Block_No"];
-      $db_res_phase = $row["address_Phase_No"];
-        $db_res_house = $row["address_House_No"];
+      $db_res_house = $row["address_House_No"];
       $db_res_street = $row["address_Street_Name"];
-      $db_res_sub = $row["address_Subdivision"];
       $db_res_brgy = $row["brgy_ID"];
-      $db_res_purok = $row["purok_ID"];
      }
                     
 ?>
    
-           <!-- ##################QUERY FOR INITIALIATION & RETRIEVING PUROK NAME###################### -->
-        
-            <?php
-  $view_query = mysqli_query($db, "SELECT * FROM ref_purok where purok_ID=' $db_res_purok '");
-            while($row = mysqli_fetch_assoc($view_query)){
-                    $db_res_pur = $row["purok_Name"];
-    }
-?>
            <!-- ##################QUERY FOR INITIALIATION & RETRIEVING BARANGAY NAME###################### -->
         
         <?php
@@ -404,7 +387,7 @@ $muser_id=$user_id;
         <div class="clearfix"></div>
 <div class="bot-border"></div>
 
-<div class="col-sm-5 col-xs-6 tital " >Address:</div><div class="col-sm-7"><?php echo $db_res_unit .", ".$db_res_build.", L".$db_res_lot.", BLK".$db_res_block.", PH".$db_res_phase.", ".$db_res_house .", ".$db_res_street." Street, ".$db_res_sub.", ".$db_res_pur.", Pulo".", Indang, Cavite";?></div>
+<div class="col-sm-5 col-xs-6 tital " >Address:</div><div class="col-sm-7"><?php echo $db_res_house .", ".$db_res_street." Street ".",  Seguinon".", Salcedo, Eastern Samar";?></div>
         
         <div class="clearfix"></div>
 <div class="bot-border"></div>

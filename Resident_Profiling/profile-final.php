@@ -232,7 +232,7 @@ $today = date('Y-m-d');
     } else {
         $voter_status = "Invalid Age";
     }
-     }
+  }
               
         
 ?>
@@ -474,11 +474,11 @@ $db_res_unit = $row["address_brgy"];
 
 
 
-<div class="col-sm-5 col-xs-6 tital " >Height:</div><div class="col-sm-7 col-xs-6 "><?php echo  $db_res_height;?></div>
+<div class="col-sm-5 col-xs-6 tital " >Height:</div><div class="col-sm-7 col-xs-6 "><?php echo  $db_res_height . " cm";?></div>
      <div class="clearfix"></div>
 <div class="bot-border"></div>
 
-<div class="col-sm-5 col-xs-6 tital " >Weight:</div><div class="col-sm-7 col-xs-6 "><?php echo  $db_res_weight;?></div>
+<div class="col-sm-5 col-xs-6 tital " >Weight:</div><div class="col-sm-7 col-xs-6 "><?php echo  $db_res_weight . " kg";?></div>
      <div class="clearfix"></div>
 <div class="bot-border"></div>
 
@@ -488,7 +488,7 @@ $db_res_unit = $row["address_brgy"];
         <div class="clearfix"></div>
 <div class="bot-border"></div>
 
-<div class="col-sm-5 col-xs-6 tital " >Contact No.:</div><div class="col-sm-7"><?php echo isset($db_res_cnum);?></div>
+<div class="col-sm-5 col-xs-6 tital " >Contact No.:</div><div class="col-sm-7"><?php echo $db_res_cnum;?></div>
         
         <div class="clearfix"></div>
 <div class="bot-border"></div>

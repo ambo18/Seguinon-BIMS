@@ -83,7 +83,7 @@ li a, .dropbtn {
 }
 
 li a:hover, .dd:hover .dropbtn {
-  background: #3d4ee7;
+  background: #17A2B8;
   color: white;
 }
 
@@ -162,6 +162,7 @@ section.sec1{
   float: left;
   width: 120px;
   height: 120px;
+  overflow: hidden;
 }
 .logo-holder1{
   position: relative;
@@ -170,10 +171,11 @@ section.sec1{
   float: right;
   width: 120px;
   height: 120px;
+  overflow: hidden;
 }
-.logo-holder > img{
+.logo-holder img, .logo-holder1 img{
   width: 100%;
-
+  height: auto;
 }
 .pic_holder{
   margin: 15px auto;
@@ -439,6 +441,10 @@ section.sec1{
 .super_holder{ overflow-y: auto; overflow-x: auto;}
 
 .resu {padding-left: 6px; width: 97%; border-bottom: 1px solid; margin: 0 auto;
+}
+
+.super_holder .data:hover {
+  background: #cacaca;
 }
 
 

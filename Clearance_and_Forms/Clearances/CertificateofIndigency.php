@@ -35,17 +35,19 @@ $sqlget_info = "SELECT * FROM resident_detail
                 $resultCheck_info = mysqli_num_rows($result_info);
 
                 if($resultCheck_info > 0){
-                  while($row = mysqli_fetch_assoc($result_info)){
-                    $houseNo= $row['address_Unit_Room_Floor_num'];
+                  while($row = mysqli_fetch_assoc($result_info)){              
                     $first= $row['res_fName'];
                     $middleName = $row['res_mName'];
                     $lastName = $row['res_lName'];
                     $civilStatus = $row['marital_Name'];
                     $house_No = $row['address_House_No'];
                     $street_Name = $row['address_Street_Name'];
-                    $phase_No = $row['address_Phase_No'];
-                    $subd_Name = $row['address_Subdivision'];
 
+                    //Get Age
+                    $today = date('Y-m-d');
+                    $db_res_bdate = $row["res_Bday"];
+                    $diff = date_diff(date_create($db_res_bdate), date_create($today));
+                    $age= $diff->format('%y');
                   }
                 }
 
@@ -336,7 +338,7 @@ if($resultcheckNow > 0){
 <?php
 $ap = date_default_timezone_set('Asia/Manila');
 date_default_timezone_get();
-$datedate = date('Y-m-d H:i:s');
+$datedate = date('Y-m-d');
 
 
 $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
@@ -471,8 +473,7 @@ $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
               <br><br>To whom it may concern:<br><br>
               &emsp;&emsp;&emsp;This is to certify that Mr. / Ms. / Mrs.
               <span id="name-input"><?php echo $first." ".$middleName." ".$lastName; ?></span>,
-              <span id="name-input"><?php echo "AGE";?></span> years old <span id="name-input"><?php echo $civilStatus;?></span>
-              and residing at <span id="name-input"><?php echo $houseNo." ".$street_Name.","." "."phase".$phase_No." ".$subd_Name;?></span>
+              <span id="name-input"><?php echo $age;?></span> years old and residing at <span id="name-input"><?php echo $house_No." ".$street_Name." St.";?></span>
               <span id="name-input"><?php echo $head_brgy_Name." ".$citymun_disp.","." ".$province_disp;?></span>
               is known to be a person of good moral character and law abiding citizen.
               <br><br>
@@ -480,7 +481,7 @@ $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
               &emsp;&emsp;&emsp;Certify further that he / she is one among our indigent citizen without source of income or scarce income.
             <br><br>
 
-              &emsp;&emsp;&emsp;Issued this <span id="name-input"><?php echo $datedate?></span> at <span id="name-input"><?php echo $head_brgy_Name." ".$citymun_disp.","." ".$province_disp;?></span>.
+              &emsp;&emsp;&emsp;Issued this on <span id="name-input"><?php echo $datedate?></span> at <span id="name-input"><?php echo $head_brgy_Name." ".$citymun_disp.","." ".$province_disp;?></span>.
 
             </div>
               <br><br><br>

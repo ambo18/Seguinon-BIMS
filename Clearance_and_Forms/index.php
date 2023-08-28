@@ -188,7 +188,7 @@ else{
                                         if($conf_check > 0){
                                           while($row6 = mysqli_fetch_assoc($res_conf)){
                                         ?>
-                                        <tr>
+                                        <tr class="data">
                                           <td class="hidden"><?php echo $row6['res_ID'];?></td>
                                           <td><?php echo $row6['res_fName'];?></td>
                                           <td><?php echo $row6['res_mName'];;?></td>
