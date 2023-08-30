@@ -116,8 +116,6 @@ echo
 
 
 <a href="Clearance_and_Forms/index.php" target="FraDisplay"><img src="Icon/certificates.png" style="float:left" width="29">&nbsp;Clearance and Forms</a>
-<a href="Health_and_Sanitation/index.php" target="FraDisplay"><img src="Icon/health.png" style="float:left" width="28">&nbsp;Health and Sanitation</a>
-<a href="Peace_and_Order/incident.php" target="FraDisplay"><img src="Icon/blotter.png" style="float:left" width="28"> &nbsp;Peace and Order</a>
 <a href="Finance/index.php" target="FraDisplay"><img src="Icon/finance.png" style="float:left" width="28">&nbsp;Finance</a>
 
 
