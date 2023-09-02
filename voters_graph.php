@@ -65,7 +65,7 @@
     <div class="row">
         <div class="col-lg-12">
             <center>
-                <h3 class="page-header">Resident Profiling Dashboard</h3>
+                <h3 class="page-header">Voters Dashboard</h3>
             </center>
         </div>
         <!-- /.col-lg-12 -->
@@ -169,7 +169,7 @@
             ]);
 
             var options = {
-                title: 'Resident Population Graph'
+                title: 'Voters Graph'
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));

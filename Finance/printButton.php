@@ -10,16 +10,10 @@
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
 	    <link href="css/css/mis.css" rel="stylesheet">
 	    <link href="vendor/css/dataTables.bootstrap.min.css" rel="stylesheet">
+
+		<link href="Style.css" type="text/css" rel="stylesheet">
 	</head>
-
-	<body>
-	    <link href="Style.css" type="text/css" rel="stylesheet">
-
-	    </head>
-
 	    <body><br>
-
-	        </div>
 	        <br>
 	        <div class="head">
 	            <font size="5">Print Records</font>
@@ -61,7 +55,7 @@
 	                    </div>
 	                </tr>
 	                <div class="clearfix"></div>
-	                <td><input type="submit" name="submit" value="Print" class="btn btn-success" target="Fradisplay"></td>
+	                <td><input type="submit" name="submit" value="Print" class="btn btn1-success" target="Fradisplay"></td>
 
 	            </form>
 
@@ -82,48 +76,44 @@
 	                        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js">
 	                    </script>
 
-	                    <td>
+						<div class="form-group col-lg-offset-4 col-md-15">
+							<td>
+								<label for="year">Year</label>
+								<input class="date-own form-control" style="width: 300px;" type="text" name="year">
 
-	                        <div class="form-group col-lg-offset-4 col-md-15">
-	                            <label for="year">Year</label>
-	                            <input class="date-own form-control" style="width: 300px;" type="text" name="year">
-
-	                            <script type="text/javascript">
-	                            $('.date-own').datepicker({
-	                                minViewMode: 2,
-	                                format: 'yyyy'
-	                            });
-	                            </script>
-
-
-	                            <br><br>
-
-	                    <td>
-	                        <select name="month">
-	                            <option selected value="" class="form-control" required>Select Month</option>
-	                            <option value="01">January
-	                            </option>
-	                            <option value="02">February</option>
-	                            <option value="03">March</option>
-	                            <option value="04">April</option>
-	                            <option value="05">May</option>
-	                            <option value="06">June</option>
-	                            <option value="07">July</option>
-	                            <option value="08">August</option>
-	                            <option value="09">September</option>
-	                            <option value="10">October</option>
-	                            <option value="11">November</option>
-	                            <option value="12">December</option>
-	                        </select>
-	                    </td>
-	                    <br><br>
-	                    <td>
-	                        <div class="clearfix"><input type="submit" name="submit" value="Print" class="btn btn-success"
-	                                target="Fradisplay">
-	                    </td>
-	                </tr>
-	                </div>
-	                </div>
+								<script type="text/javascript">
+								$('.date-own').datepicker({
+									minViewMode: 2,
+									format: 'yyyy'
+								});
+								</script>
+								<br><br>
+							<td>
+							<select name="month">
+								<option selected value="" class="form-control" required>Select Month</option>
+								<option value="01">January
+								</option>
+								<option value="02">February</option>
+								<option value="03">March</option>
+								<option value="04">April</option>
+								<option value="05">May</option>
+								<option value="06">June</option>
+								<option value="07">July</option>
+								<option value="08">August</option>
+								<option value="09">September</option>
+								<option value="10">October</option>
+								<option value="11">November</option>
+								<option value="12">December</option>
+							</select>
+							</td>
+							<br><br>
+								<td>
+									<div class="clearfix"><input type="submit" name="submit" value="Print" class="btn btn1-success"
+											target="Fradisplay"></div>
+								</td>
+							</td>
+						</div>
+					</tr>
 	            </form>
 	        </center>
 
