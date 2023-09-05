@@ -24,7 +24,7 @@ img {
 
 <body>
 <div class="left">
-&nbsp;&nbsp;&nbsp; BRGY.BALAGBAG MAHABANG KAHOY LEJOS</CENTER>
+&nbsp;&nbsp;&nbsp; BRGY. SEGUINON SALCEDO EASTERN SAMAR</CENTER>
 <br>
 
 </div>
