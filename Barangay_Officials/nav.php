@@ -1,5 +1,5 @@
 <?php
-session_start();
+	session_start();
 ?>
 <style type="text/css">
 	#lia{
@@ -10,13 +10,14 @@ session_start();
 		color: black;
 	}
 </style>
+<link href="style/style.css" rel="stylesheet" type="text/css">
 <ul class="nav navbar-nav">
 
-			<li><a href="index.php" id="lia">Home</a></li>
+	<li><a href="index.php" id="lia">Home</a></li>
 <?php 
-if ($_SESSION['position']=='Barangay Secretary')
-echo'
-            <li><a href="chart.php"  id="lia">Officials</a></li>
-            <li><a href="add.php"  id="lia">Add</a></li>';?>
-          </li>
-      </ul>
+	if ($_SESSION['position']=='Barangay Secretary')
+	echo'
+		<li><a href="chart.php"  id="lia">Officials</a></li>
+		<li><a href="add.php"  id="lia">Add</a></li>
+';?>
+</ul>

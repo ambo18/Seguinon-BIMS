@@ -20,9 +20,7 @@
   $orNo = $_POST['orNo'];
   $res_ID = $_POST['busid'];
   $houseNo = $_POST['houseNo'];
-  $lot = $_POST['lot'];
   $street = $_POST['street'];
-  $phase = $_POST['phase'];
   $sqlget_info = "SELECT * FROM resident_detail
                 	LEFT JOIN resident_address ON resident_detail.res_ID = resident_address.res_ID
                     LEFT JOIN ref_marital_status ON resident_detail.marital_ID = ref_marital_status.marital_ID
@@ -39,7 +37,6 @@
 
                   if($resultCheck_info > 0){
                     while($row = mysqli_fetch_assoc($result_info)){
-                      $hN= $row['address_Unit_Room_Floor_num'];
                       $first= $row['res_fName'];
                       $middleName = $row['res_mName'];
                       $lastName = $row['res_lName'];
@@ -423,11 +420,11 @@ $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
               <br><br>To whom it may concern:<br><br>
               &emsp;&emsp;&emsp;This is to certify that the application of Barangay Clearance for the construction of residential
               building / commercial and / or industrial establishment of Mr. / Mrs. / Ms. <span id="name-input"><?php echo $first." ".$middleName." ".$lastName; ?></span>
-              with postal address at <span id="name-input"><?php echo $houseNo." ".$street." "."lot"." ".$lot." "."Phase"." ".$phase?></span>, <span id="name-input"><?php echo $head_brgy_Name." ".$citymun_disp.","." ".$province_disp;?></span> is hereby granted subject to the rules and regulation
+              with postal address at <span id="name-input"><?php echo $houseNo." ".$street?></span>, <span id="name-input"><?php echo $head_brgy_Name." ".$citymun_disp.","." ".$province_disp;?></span> is hereby granted subject to the rules and regulation
               as provided for under the existing Zoning Ordinance of the Barangay, the National Bulding Code and other related agencies.
               <br><br>
 
-              &emsp;&emsp;&emsp;Issued this <span id="name-input"><?php echo $datedate?> at <span id="name-input"><?php echo $head_brgy_Name;?></span>, Indang Cavite.
+              &emsp;&emsp;&emsp;Issued this <span id="name-input"><?php echo $datedate?> at <span id="name-input"><?php echo $head_brgy_Name;?></span>, Salcedo, Eastern Samar.
             </div>
               <div class="signature signline center margint120">APPLICANT'S SIGNATURE</div>
               <div class="ccon">

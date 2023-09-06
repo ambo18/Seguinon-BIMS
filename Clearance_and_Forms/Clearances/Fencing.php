@@ -20,8 +20,6 @@ $orNo = $_POST['orNo'];
 $res_ID = $_POST['busid'];
 $houseNo = $_POST['houseNo'];
 $street = $_POST['street'];
-$lot = $_POST['lot'];
-$phase = $_POST['phase'];
 $sqlget_info = "SELECT * FROM resident_detail
                 LEFT JOIN resident_address ON resident_detail.res_ID = resident_address.res_ID
                   LEFT JOIN ref_marital_status ON resident_detail.marital_ID = ref_marital_status.marital_ID
@@ -38,7 +36,6 @@ $sqlget_info = "SELECT * FROM resident_detail
 
                 if($resultCheck_info > 0){
                   while($row = mysqli_fetch_assoc($result_info)){
-                    $hN= $row['address_Unit_Room_Floor_num'];
                     $first= $row['res_fName'];
                     $middleName = $row['res_mName'];
                     $lastName = $row['res_lName'];
@@ -418,7 +415,7 @@ $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
               <br><br>To whom it may concern:<br><br>
               &emsp;&emsp;&emsp;This is to certify that the application for Fencing of  Mrs. Ms. / Mr.
               <span id="name-input"><?php echo $first." ".$middleName." ".$lastName; ?></span> with postal address at
-              <span id="name-input"><?php echo $houseNo." ".$street." "."lot no:".$lot." "."phase:".$phase;?></span>, <span id="name-input"><?php echo $head_brgy_Name." ".$citymun_disp.","." ".$province_disp;?></span>
+              <span id="name-input"><?php echo $houseNo." ".$street;?></span>, <span id="name-input"><?php echo $head_brgy_Name." ".$citymun_disp.","." ".$province_disp;?></span>
               is hereby granted subject to the rules and regulation is provided for under the existing Zoning Ordinance of the Barangay,
               the National Building Code and other related agencies.<br><br>
 

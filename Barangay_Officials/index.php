@@ -12,10 +12,10 @@
 </head>
 
 <div class="container-fluid">
-  <nav class="navbar navbar-fixed-top" style="background-color: #e94b3c; ">
+  <nav class="navbar navbar-fixed-top">
     <div class="navbar-header">
 
-      <a class="navbar-brand" id="brand" style="color: #f2f2f2">BARANGAY OFFICIALS </a>
+      <div class="navbar-brand" id="brand" style="color: #f2f2f2">BARANGAY OFFICIALS |</div>
     </div>
     <div>
         <?php include('nav.php'); ?>

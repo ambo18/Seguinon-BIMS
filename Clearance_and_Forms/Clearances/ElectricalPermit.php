@@ -35,7 +35,6 @@ $sqlget_info = "SELECT * FROM resident_detail
 
                 if($resultCheck_info > 0){
                   while($row = mysqli_fetch_assoc($result_info)){
-                    $hN= $row['address_Unit_Room_Floor_num'];
                     $first= $row['res_fName'];
                     $middleName = $row['res_mName'];
                     $lastName = $row['res_lName'];

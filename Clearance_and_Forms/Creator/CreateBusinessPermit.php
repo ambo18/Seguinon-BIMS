@@ -18,7 +18,7 @@
 
   <body>
     <div class="wrapper">
-      <nav style="background: #14aa6c">
+      <nav style="background: #2D2D2D">
         <div class="logo">Business Permit</div>
         <ul>
           <li class="dd">
@@ -36,7 +36,7 @@
             <form action="../Clearances/BusinessPermit.php" method="POST">
 
               <div class = "perBox">
-                  <div class="titele center borderNow">
+                  <div class="titele center borderNow" style="color: FFF;">
                     Business Details
                   </div>
                   <div class="left">
@@ -49,7 +49,7 @@
                   </div>
               </div>
               <div class = "perBox margint100">
-                  <div class="titele center borderNow">
+                  <div class="titele center borderNow" style="color: FFF;">
                     Business Address
                   </div>
                   <div class="left">
@@ -63,7 +63,7 @@
                   </div>
               </div>
               <div class = "perBox margint100">
-                  <div class="titele center borderNow">
+                  <div class="titele center borderNow" style="color: FFF;">
                     Application Reference
                   </div>
                   <div class="left">

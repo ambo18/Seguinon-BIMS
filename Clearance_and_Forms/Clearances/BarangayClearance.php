@@ -35,16 +35,12 @@
 
                   if($resultCheck_info > 0){
                     while($row = mysqli_fetch_assoc($result_info)){
-                      $hN= $row['address_Unit_Room_Floor_num'];
                       $first= $row['res_fName'];
                       $middleName = $row['res_mName'];
                       $lastName = $row['res_lName'];
                       $civilStatus = $row['marital_Name'];
                       $house_No = $row['address_House_No'];
                       $street_Name = $row['address_Street_Name'];
-                      $phase_No = $row['address_Phase_No'];
-                      $subd_Name = $row['address_Subdivision'];
-
                     }
                   }
 

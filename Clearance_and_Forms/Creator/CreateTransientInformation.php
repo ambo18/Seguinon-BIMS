@@ -14,7 +14,7 @@
   </head>
   <body>
     <div class="wrapper">
-      <nav style="background: #14aa6c">
+      <nav style="background: #2D2D2D">
         <div class="logo">Transient Information&nbsp;&nbsp;&nbsp;| </div>
         <ul>
           <li class="dd">
@@ -32,7 +32,7 @@
             <form action="../Clearances/TransientInformation.php" method="POST" enctype="multipart/form-data">
 
                               <div class = "perBox">
-                                <div class="titele center borderNow">
+                                <div class="titele center borderNow" style="color: FFF;">
                                     Picture
                               </div>
                               </div>
@@ -43,7 +43,7 @@
                               <br>
 
                               <div class="perBox">
-                                <div class="titele center borderNow">
+                                <div class="titele center borderNow" style="color: FFF;">
                                   APPLICANT
                                 </div>
                                 <div class="left">
@@ -68,7 +68,7 @@
                                 </div>
                               </div>
                               <div class="perBox margint200">
-                                <div class="titele center borderNow">
+                                <div class="titele center borderNow" style="color: FFF;">
                                   Basic Information
                                 </div>
                                 <div class="left">
@@ -86,7 +86,7 @@
                                 </div>
                               </div>
                               <div class="perBox margint200">
-                                <div class="titele center borderNow">
+                                <div class="titele center borderNow" style="color: FFF;">
                                   Main Address
                                 </div>
                                 <div class = "left">
@@ -108,7 +108,7 @@
                                 </div>
                               </div>
                               <div class = "perBox margint200">
-                                <div class="titele center borderNow">
+                                <div class="titele center borderNow" style="color: FFF;">
                                   Address within the Barangay
                                 </div>
                                 <div class = "left">
@@ -124,8 +124,8 @@
                                   <input type="text" name="temp_barangay" id="temp_barangay" /><br><br>
                                 </div>
                               </div>
-                              <div class = "perBox margint120">
-                                <div class="titele center borderNow">
+                              <div class = "perBox margint121">
+                                <div class="titele center borderNow" style="color: FFF;">
                                   Spouse (if Married)
                                 </div>
                                 <div class = "left">
@@ -149,7 +149,7 @@
                               </div>
                             </div>
                             <div class = "perBox margint200">
-                              <div class="titele center borderNow">
+                              <div class="titele center borderNow" style="color: FFF;">
                                 Employer (if employed)
                               </div>
                               <div class = "left">
@@ -162,7 +162,7 @@
                               </div>
                             </div>
                             <div class = "perBox margint120">
-                              <div class="titele center borderNow">
+                              <div class="titele center borderNow" style="color: FFF;">
                                 Reference
                               </div>
                               <div class = "left">
@@ -175,7 +175,7 @@
                               </div>
                             </div>
                             <div class = "perBox margint120">
-                                <div class="titele center borderNow">
+                                <div class="titele center borderNow" style="color: FFF;">
                                   Application Reference
                                 </div>
                                 <div class="left">

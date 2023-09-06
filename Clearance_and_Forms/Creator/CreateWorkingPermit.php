@@ -20,7 +20,7 @@
   </head>
   <body>
     <div class="wrapper">
-      <nav style="background: #14aa6c">
+      <nav style="background: #2D2D2D">
         <div class="logo">Working Permit&nbsp;&nbsp;&nbsp; | </div>
         <ul>
           <li class="dd">
@@ -33,7 +33,7 @@
           <div class="input-container">
             <form action="../Clearances/WorkingPermit.php" method="POST" enctype="multipart/form-data">
                               <div class = "perBox">
-                                  <div class="titele center borderNow">
+                                  <div class="titele center borderNow" style="color: FFF;">
                                     Picture
                                   </div>
                                 </div>
@@ -43,7 +43,7 @@
                                   </center>
                                   <br>
                               <div class="perBox">
-                                <div class="titele center borderNow">
+                                <div class="titele center borderNow" style="color: FFF;">
                                   APPLICANT
                                 </div>
                                 <div class="left">
@@ -66,7 +66,7 @@
                                 </div>
                               </div>
                               <div class="perBox margint200">
-                                <div class="titele center borderNow">
+                                <div class="titele center borderNow" style="color: FFF;">
                                   Basic Information
                                 </div>
                                 <div class="left">
@@ -90,7 +90,7 @@
                                 </div>
                               </div>
                               <div class="perBox margint">
-                                <div class="titele center borderNow">
+                                <div class="titele center borderNow" style="color: FFF;">
                                   Father--------Parents--------Mother
                                 </div>
                                 <div class="left">
@@ -117,7 +117,7 @@
                                 </div>
                               </div>
                               <div class="perBox margint200">
-                                <div class="titele center borderNow">
+                                <div class="titele center borderNow" style="color: FFF;">
                                   Address
                                 </div>
                                 <div class = "left">
@@ -131,7 +131,7 @@
                                 </div>
                               </div>
                             <div class = "perBox margint70">
-                              <div class="titele center borderNow">
+                              <div class="titele center borderNow" style="color: FFF;">
                                 Employer
                               </div>
                               <div class = "left">
@@ -144,7 +144,7 @@
                               </div>
                             </div>
                             <div class = "perBox margint70">
-                              <div class="titele center borderNow">
+                              <div class="titele center borderNow" style="color: FFF;">
                                 Reference
                               </div>
                               <div class = "left">
