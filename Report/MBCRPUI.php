@@ -165,7 +165,7 @@ session_start();
 
             <center>
 
-                <font face="Gordana" size="3">MANILA BAY CLEAN UP,REHABILITATION AND PRESERVATION PROJECT <br>Quarter:
+                <font face="Gordana" size="3">BARANGAY CLEAN UP <br>Quarter:
                     <select name="quarter" required>
                         <option value="">Select quarter</option>
                         <option value="1st">1st</option>
@@ -189,12 +189,10 @@ session_start();
             </p><br>
             <div class="row">
                 <div class="col-sm-6">
-                    <label1 for="exampleInputName2">Name of Barangay:</label1>
-                    <?php echo $_SESSION['barangay']; ?>
+                    <label1 for="exampleInputName2">Name of Barangay: Seguinon</label1>
                     <br>
                     <br>
-                    <label1 for="exampleInputName2">Provincial Location:Cavite</label1>
-
+                    <label1 for="exampleInputName2">Provincial Location: Eastern Samar</label1>
                     <br>
                     <br>
                     <?php
@@ -213,11 +211,11 @@ $num_rows=$row['total'];
 
                 </div>
                 <div class="col-sm-6">
-                    <label1 for="exampleInputName2">Municipality: INDANG</label1>
+                    <label1 for="exampleInputName2">Municipality: Salcedo</label1>
 
                     <br>
                     <br>
-                    <label1 for="exampleInputName2">Regional Location:IV-A(CALABARZON)</label1>
+                    <label1 for="exampleInputName2">Regional Location:VIII-(EASTERN VISAYAS)</label1>
 
                     <br>
                     <br><?php

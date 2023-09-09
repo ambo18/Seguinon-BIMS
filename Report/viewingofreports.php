@@ -42,7 +42,7 @@ include('dbcon.php');
 							$id = $row["mb_ID"];
 								
 							echo "<tr>
-                            <td>Manila Bay Clean Up</td>
+                            <td>Barangay Clean Up</td>
                            
                             <td>".$row["date_save"]."</td>
                             <td><a target='_blank' href='MBCRP.php?id=$id'><button  class='btn btn-success'> View</button></a><input type='button' onClick='deleteme(".$id.")' class='btn btn-danger' value='Delete'></td>

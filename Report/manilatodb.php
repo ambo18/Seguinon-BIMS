@@ -46,7 +46,7 @@ $cap = $_SESSION['captain'];
 
 	include('dbcon.php');
 $ins_query="INSERT into `ref_manilabay` (`quarter`, `year`, `population`, `household`, `tnc`, `ca`, `ch1`, `a1`, `a2`, `total`, `cch1`, `cc1`, `cc3`, `accomby`, `brgycaptain`,`date_save`,`name_barangay`) values ('$q','$f','$population','$household','$t','$ca','$ch','$a','$aa','$ta','$cch','$cc','$ccc','$c','$cap','$d','$brgy')";
-				if ($con->query($ins_query) === TRUE) 
+				if ($db->query($ins_query) === TRUE) 
 				{
 					$ins_query1="SELECT LAST_VALUE(mb_ID) as lastt FROM `ref_manilabay`";
 					$result = mysqli_query($db, $ins_query1);  
@@ -55,19 +55,19 @@ $ins_query="INSERT into `ref_manilabay` (`quarter`, `year`, `population`, `house
 					}
 					
 					$ins_query2="INSERT into `manila_step` (`step_id`, `k`, `l`, `r`, `n`) values ('$num_rows','$k1','$l1','$r1','$n1')";
-					if ($con->query($ins_query2) === TRUE) {
+					if ($db->query($ins_query2) === TRUE) {
 						/////echo 'Successfully Saved!';
 					}
 					$ins_query2="INSERT into `manila_step` (`step_id`, `k`, `l`, `r`, `n`) values ('$num_rows','$k2','$l2','$r2','$n2')";
-					if ($con->query($ins_query2) === TRUE) {
+					if ($db->query($ins_query2) === TRUE) {
 						//////echo 'Successfully Saved!';
 					}
 					$ins_query2="INSERT into `manila_step` (`step_id`, `k`, `l`, `r`, `n`) values ('$num_rows','$k3','$l3','$r3','$n3')";
-					if ($con->query($ins_query2) === TRUE) {
+					if ($db->query($ins_query2) === TRUE) {
 						///////echo 'Successfully Saved!';
 					}
 					$ins_query2="INSERT into `manila_step` (`step_id`, `k`, `l`, `r`, `n`) values ('$num_rows','$k4','$l4','$r4','$n4')";
-					if ($con->query($ins_query2) === TRUE) {
+					if ($db->query($ins_query2) === TRUE) {
 						echo 'Successfully Saved!';
 					}
 						

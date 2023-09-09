@@ -40,7 +40,7 @@ session_start();
         <p>
             <center>
                 <font face="Gordana" size="4">Republic of the Philippines <br> Department of Interior and Local
-                    Government <br>Province of Cavite <br> Municipality of Indang <br> <label> BARANGAY </label> <label
+                    Government <br>Province of Eastern Samar <br> Municipality of Salcedo <br> <label> BARANGAY </label> <label
                         type="text" name="barangay" id="barangay" value="<?php echo $_SESSION['barangay'];?>">
                         <?php echo $_SESSION['barangay'];?></label></font>
         </p>

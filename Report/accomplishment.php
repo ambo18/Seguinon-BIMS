@@ -16,7 +16,7 @@ $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->SetFont('Times','',12);
 
- $pdf->Image($picngbmis, 12, 10, 35, 30, 'png');
+ $pdf->Image($picngbmis, 14, 7, 40, 35, 'png');
 
  $pdf->Image($picngbmis1, 160, 10, 33, 28, 'png'); 
    
@@ -37,10 +37,10 @@ $pdf->SetFont('Times','',12);
     // Title
      $pdf->Cell(200,5,"",0,1,'C');
     $pdf->Cell(200,5,"Republic of the Philippines",0,1,'C');
-     $pdf->Cell(200,5,"Province of Cavite",0,1,'C');
-     $pdf->Cell(200,5,"City of General Trias",0,1,'C');
+     $pdf->Cell(200,5,"Province of Eastern Samar",0,1,'C');
+     $pdf->Cell(200,5,"Municipality of Salcedo",0,1,'C');
       $pdf->Ln(2);
-     $pdf->Cell(200,5,"BARANGAY $brgy",0,1,'C');
+     $pdf->Cell(200,5,"Barangay Seguinon",0,1,'C');
      $pdf->Ln(5);
      $pdf->SetFont('Arial','B',12);
      $pdf->Cell(200,15,"OFFICE OF THE SANGGUNIANG BARANGAY",0,1,'C');

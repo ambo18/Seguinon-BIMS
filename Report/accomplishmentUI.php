@@ -83,9 +83,9 @@
              <p>
                  <center>
                      <font face="Gordana" size="4">Republic of the Philippines <br>
-                         Province of Cavite <br>
-                         Municipality of Indang <br>
-                         <label> BARANGAY <?php echo $_SESSION['barangay']; ?></label> <br>
+                         Province of Eastern Samar <br>
+                         Municipality of Salcedo <br>
+                         <label> Barangay Seguinon</label> <br>
                          <br>
                          <font face="Gordana" size="6"><b>OFFICE OF THE SANGGUNIANG BARANGAY</b></font><br>
                      </font>

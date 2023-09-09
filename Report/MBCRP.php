@@ -15,7 +15,7 @@ $ins_query2="SELECT * FROM ref_manilabay WHERE mb_ID = '$id'";
 $result1 = mysqli_query($db, $ins_query2);
 $row1 = mysqli_fetch_array($result1);
 	
- $pdf->Image($picngbmis, 10, 10, 50, 30, 'png');
+ $pdf->Image($picngbmis, 14, 7, 40, 35, 'png');
  
  $pdf->Image($picngbmis1, 160, 10, 33, 28, 'png'); 
  
@@ -33,13 +33,13 @@ $pdf->Cell(50,5,"",5,5,'C');
 $pdf->Cell(50,5,"GENERAL INFORMATION",5,5,''); 
 $pdf->Cell(50,5,"",5,5,'C'); 
 $brgyname=strtoupper($_SESSION['barangay']);
-$pdf->Cell(50,5,"Name of Barangay: $brgyname                                                Municipality:General Trias ",5,5,'');
+$pdf->Cell(50,5,"Name of Barangay: SEGUINON                                                Municipality:General Trias ",5,5,'');
     
 
-$pdf->Cell(50,5,"Provincial location: CAVITE                                    Regional location:IV-A (CALABARZON) ",5,5,'');
+$pdf->Cell(50,5,"Provincial location: EASTERN SAMAR                                    Regional location:IV-A (CALABARZON) ",5,5,'');
 $totalpup=$row1['population'];
 $household=$row1['household'];
-$pdf->Cell(50,5,"Total Population: $totalpup                                                    No: of Household:$household ",5,5,'');
+$pdf->Cell(50,5,"Total Population: $totalpup                                                                   No: of Household:$household ",5,5,'');
 
 
 

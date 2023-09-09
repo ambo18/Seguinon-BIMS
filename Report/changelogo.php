@@ -48,21 +48,37 @@
             $name = $_FILES['myfile']['name'];
             $type = $_FILES['myfile']['type'];
             $data = file_get_contents($_FILES['myfile']['tmp_name']);
-			if($type=="image/jpg"||$type=="image/PNG"){
-				// $stmt = $dbh->prepare("UPDATE `ref_logo` SET `logo_img` = ? WHERE `logo_ID` = '$ieto'");
-
+            if ($type == "image/png") {
                 include('dbcon.php');
-                $query = "UPDATE `ref_logo` SET `logo_img` = ? WHERE `logo_ID` = '$ieto'";
-                $res = mysqli_query($db,$query);
-
-                // $stmt->bindParam(1,$data);
-                // $stmt->execute();
-                echo "<script type='text/javascript'> alert('Successful'); </script>";
-                header("location: logosettings.php");
-			}
-            else{
-				echo "<script type='text/javascript'> alert('Please select PNG/png file only.'); </script>";
-			}
+            
+                $query = "UPDATE `ref_logo` SET `logo_img` = ? WHERE `logo_ID` = ?";
+                
+                $stmt = mysqli_prepare($db, $query);
+            
+                if ($stmt) {
+                    // Bind the parameters
+                    mysqli_stmt_bind_param($stmt, "si", $data, $ieto);
+                    
+                    // Assign values to the parameters
+                    $data = file_get_contents($_FILES['myfile']['tmp_name']);
+                    $ieto = $_GET['id'];
+                    
+                    // Execute the statement
+                    if (mysqli_stmt_execute($stmt)) {
+                        echo "<script type='text/javascript'> alert('Successful'); </script>";
+                        header("location: logosettings.php");
+                    } else {
+                        echo "<script type='text/javascript'> alert('Error updating the logo.'); </script>";
+                    }
+                    
+                    // Close the statement
+                    mysqli_stmt_close($stmt);
+                } else {
+                    echo "<script type='text/javascript'> alert('Error preparing the statement.'); </script>";
+                }
+            } else {
+                echo "<script type='text/javascript'> alert('Please select PNG file only.'); </script>";
+            }            
            
         }
 ?>

@@ -48,7 +48,7 @@ $id = $_GET['id'];
 						}
 		   else if($id==7){
 			   
-				 $reportdescription = "Manila Bay Clean-Up";
+				 $reportdescription = "Barangay Clean-Up";
 				}
 		    else if($id==12){
 			     $reportdescription = "Attendance Monitoring";

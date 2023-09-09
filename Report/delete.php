@@ -2,7 +2,7 @@
 session_start();
 $id = $_GET['id'];
 $iid = $_SESSION['reportID'];
-$connect = mysqli_connect('localhost', 'root', '', 'bmis_db');
+$connect = mysqli_connect('localhost', 'root', '', 'seguinon_db');
 $db = $connect; // Assign the database connection to $db
 
 if ($_SESSION['reportID'] == 2) {

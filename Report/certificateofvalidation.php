@@ -25,7 +25,7 @@ $pdf->SetFont('Times','',12);
 							
 							
 		 
-    $pdf->Image($picngbmis, 14, 10, 35, 30, 'png');						
+    $pdf->Image($picngbmis, 14, 7, 40, 35, 'png');						
 		
  $pdf->Image($picngbmis1, 160, 10, 33, 28, 'png'); 					
 							
@@ -44,10 +44,10 @@ $pdf->SetFont('Times','',12);
     // Title
     $pdf->Cell(185,6,"Republic of the Philippines",0,5,'C');
      $pdf->Cell(190,6,"Department of Interior & Local Government",5,5,'C');
-     $pdf->Cell(185,6,"Province of Cavite",5,5,'C');
+     $pdf->Cell(185,6,"Province of Eastern Samar",5,5,'C');
 $pdf->SetFont('Arial','B',15);
       $pdf->Ln(3);
-     $pdf->Cell(190,5,"BARANGAY $brgy",5,5,'C');
+     $pdf->Cell(190,5,"Barangay Seguinon",5,5,'C');
      $pdf->Ln(20);
      $pdf->Cell(200,10,"OFFICE OF THE BARANGAY CHAIRMAN",5,5,'C');
 $pdf->Cell(10,0,"",0,0);
