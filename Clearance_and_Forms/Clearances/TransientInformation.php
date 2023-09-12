@@ -137,7 +137,7 @@ $resultTrans=mysqli_fetch_array($transR);
 <?php
 $ap = date_default_timezone_set('Asia/Manila');
 date_default_timezone_get();
-$datedate = date('Y-m-d H:i:s');
+$datedate = date('Y-m-d');
 
 
 $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)

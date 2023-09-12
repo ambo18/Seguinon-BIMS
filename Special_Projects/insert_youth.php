@@ -31,7 +31,7 @@ mysqli_query($db, $query) or die("ERROR");
 <body>
 <div class="label"> 
 </div>
-<div class="navbar" style="background-color: #e94b3c;">
+<div class="navbar" style="background-color: #2D2D2D;">
 <a href="view.php">HOME</a>
     <div class="dropdown">
       <button class="dropbtn">Insert New Record

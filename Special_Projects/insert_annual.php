@@ -41,7 +41,7 @@ $status = "New Record Inserted Successfully.</br></br><a href='view.php'>View In
    <body>
 <div class="label">
 </div>
- <div class="navbar" style="background-color: #e94b3c;">
+ <div class="navbar" style="background-color: #2D2D2D;">
 <a href="index.php">HOME</a>
 
     <div class="dropdown">

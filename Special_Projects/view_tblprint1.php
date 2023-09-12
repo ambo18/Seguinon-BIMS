@@ -2,13 +2,13 @@
 session_start();
 include('db.php');
 
-$sql = mysqli_query($db, "SELECT * FROM accounts WHERE Position = 'Barangay Treasurer'");
+$sql = mysqli_query($db, "SELECT * FROM brgy_official WHERE Position = 'Barangay Treasurer'");
 while ($row = mysqli_fetch_assoc($sql))
 {
 	$treasurer = $row['Fullname'];
 }
 
-$sql1 = mysqli_query($db, "SELECT * FROM accounts WHERE Position = 'Barangay Captain'");
+$sql1 = mysqli_query($db, "SELECT * FROM brgy_official WHERE Position = 'Barangay Captain'");
 while ($row = mysqli_fetch_assoc($sql1))
 {
 	$captain = $row['Fullname'];
@@ -57,8 +57,8 @@ $pdf->SetFont('dejavusans', '', 12);
 
 // add a page
 $pdf->AddPage('L');
-  $pdf->Image('../Picture/banaba.png',68,9,30);
- $pdf->Image('indang-logo.png',200,9,25); 
+  $pdf->Image('../Picture/logo.png',68,9,30);
+ $pdf->Image('../Picture/salcedo.png',200,9,25); 
 $print=$_POST['print'];
 if($print == "All")
 {
@@ -100,11 +100,11 @@ $total = $_SESSION['total'];
     <tr><td>SANGGUNIANG KABATAAN FUND</td></tr>
     <tr><td>Details of Program/ Project/ Activity by Sector.</td></tr>
 	<tr><td>Budget Year: '.$print.'</td></tr>
-	<tr><td>Municipality of Indang</td></tr>
-	<tr><td>Province of Cavite</td></tr>
+	<tr><td>Municipality of Salcedo</td></tr>
+	<tr><td>Province of Eastern Samar</td></tr>
 </table>
 ';
-			$html2= '<table align="center"  cellspacing="auto" cellpadding="auto" border="1">
+			$html2= '</p><table align="center"  cellspacing="auto" cellpadding="auto" border="1">
 			<tr>
 			<td align="center"><b>AIP Reference Code</b></td>
 			<td align="center"><b>Programs/ Project/ Activities</b></td>

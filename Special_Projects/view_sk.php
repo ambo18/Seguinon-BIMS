@@ -14,7 +14,7 @@ require('db.php');
    <body>
 <div class="label">
 </div>
-<div class="navbar" style="background-color: #e94b3c;">
+<div class="navbar" style="background-color: #2D2D2D;">
 
     <?php 
 if ($_SESSION['position']=='Barangay Secretary' OR $_SESSION['position']=='Barangay Treasurer')
@@ -72,7 +72,7 @@ echo'
             ?>
           
           </select>
-            <input  class="" type="submit" name="submit" value="Search">
+            <input  class="" type="submit" name="submit" value="PRINT">
 </form>              
       <section class="down">
         <div class="banner">
@@ -141,7 +141,7 @@ while ($row = mysqli_fetch_assoc($result)) { ?>
                             <?php $count++; }
 
 
-  $add=mysqli_query($db,'SELECT SUM(amount) from `annual_project`');
+  $add=mysqli_query($db,'SELECT SUM(amount) from `annual_project` Where source="Sangguniang Kabataan Fund" and year = (SELECT MAX(year) from annual_project);');
   while($row1=mysqli_fetch_array($add))
   {
     $total=$row1['SUM(amount)'];

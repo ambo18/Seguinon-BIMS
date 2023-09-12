@@ -53,7 +53,7 @@ echo '<p style="color:blue;">'.$status.'</p>';
                         <body>
 <div class="label">
 </div>
-<div class="navbar" style="background-color: #e94b3c;">
+<div class="navbar" style="background-color: #2D2D2D;">
 
     <div class="dropdown">
       <button class="dropbtn">Insert New Record

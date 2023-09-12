@@ -2,13 +2,13 @@
 session_start();
 include('db.php');
 
-$sql = mysqli_query($db, "SELECT * FROM accounts WHERE Position = 'Barangay Treasurer'");
+$sql = mysqli_query($db, "SELECT * FROM brgy_official WHERE Position = 'Barangay Treasurer'");
 while ($row = mysqli_fetch_assoc($sql))
 {
         $treasurer = $row['Fullname'];
 }
 
-$sql1 = mysqli_query($db, "SELECT * FROM accounts WHERE Position = 'Barangay Captain'");
+$sql1 = mysqli_query($db, "SELECT * FROM brgy_official WHERE Position = 'Barangay Captain'");
 while ($row = mysqli_fetch_assoc($sql1))
 {
         $captain = $row['Fullname'];

@@ -31,7 +31,7 @@ $ins_query="insert into youth_investment (`issues`,`programs`,`result`,`amount`,
                         <body>
 <div class="label">
 </div>
-<div class="navbar" style="background-color: #e94b3c;">
+<div class="navbar" style="background-color: #2D2D2D;">
 
     <?php 
 if ($_SESSION['position']=='Barangay Secretary' OR $_SESSION['position']=='Barangay Treasurer')

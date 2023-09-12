@@ -2,13 +2,13 @@
 session_start();
 include('db.php');
 
-$sql = mysqli_query($db, "SELECT * FROM accounts WHERE Position = 'Barangay Treasurer'");
+$sql = mysqli_query($db, "SELECT * FROM brgy_official WHERE Position = 'Barangay Treasurer'");
 while ($row = mysqli_fetch_assoc($sql))
 {
 	$treasurer = $row['Fullname'];
 }
 
-$sql1 = mysqli_query($db, "SELECT * FROM accounts WHERE Position = 'Barangay Captain'");
+$sql1 = mysqli_query($db, "SELECT * FROM brgy_official WHERE Position = 'Barangay Captain'");
 while ($row = mysqli_fetch_assoc($sql1))
 {
 	$captain = $row['Fullname'];
@@ -61,8 +61,8 @@ $pdf->AddPage('L');
 
 $print=$_POST['print'];
 
-   $pdf->Image('alulod.png',68,9,30);
- $pdf->Image('indang-logo.png',200,9,25); 
+   $pdf->Image('../Picture/logo.png',68,9,30);
+ $pdf->Image('../Picture/salcedo.png',200,9,25); 
 if($print == "all")
 {
 	$query = "SELECT * from annual_project where `source` =  'Barangay Development Fund'";	
@@ -90,7 +90,7 @@ else
 		}
 }
 
-$result = @mysqli_query ($dbc, $query); // Run the query.
+$result = @mysqli_query ($db, $query); // Run the query.
 $strings = mysqli_num_rows($result); // How many users are there?
 
 $html3='';
@@ -110,8 +110,8 @@ else
     <tr><td>BARANGAY DEVELOPMENT FUND</td></tr>
     <tr><td>Details of Program/ Project/ Activity by Sector.</td></tr>
 	<tr><td>Budget Year: '.$print.'</td></tr>
-	<tr><td>Municipality of Indang</td></tr>
-	<tr><td>Province of Cavite</td></tr>
+	<tr><td>Municipality of Salcedo</td></tr>
+	<tr><td>Province of Eastern Samar</td></tr>
 </table>
 ';
 			$html2 = '</big></p> 
