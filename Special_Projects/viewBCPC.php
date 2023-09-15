@@ -136,9 +136,8 @@ while ($row = mysqli_fetch_assoc($result)) { ?>
                             </td>
                             
 
-                            <?php $count++; }
-
-
+<?php 
+  $count++; }
   $add=mysqli_query($db,'SELECT SUM(amount) from `annual_project`   Where source="Barangay Council For The Protection of Children Fund" and year = (SELECT MAX(year) from annual_project);');
   while($row1=mysqli_fetch_array($add))
   {

@@ -1,3 +1,3 @@
 <?php 
-	$dbc = mysqli_connect("localhost", "root", "", "bims");
+	$dbc = mysqli_connect("localhost", "root", "", "seguinon_db");
 ?>

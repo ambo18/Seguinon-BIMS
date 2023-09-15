@@ -22,7 +22,7 @@ input[type=text] {
     height: 50%;
     background-color: white;
     float: center;
-    border: 2px solid green;
+    border: 2px solid #3d4ee7;
     border-radius: 10px;
 
 
@@ -50,11 +50,11 @@ input[type=text] {
 .button1 {
     background-color: white;
     color: black;
-    border: 2px solid #4CAF50;
+    border: 2px solid #3d4ee7;
 }
 
 .button1:hover {
-    background-color: #4CAF50;
+    background-color: #3d4ee7;
     color: white;
 }
 </style>

@@ -103,11 +103,12 @@ echo'
                 </thead>
                 <tbody>
 
-                    <?php
-$count=1;
-$sel_query= "Select * from annual_project where `source`='Sangguniang Kabataan Fund' and year = (SELECT MAX(year) from annual_project) ORDER BY project_id desc";
-$result = mysqli_query($db,$sel_query);
-while ($row = mysqli_fetch_assoc($result)) { ?> 
+<?php
+  $count=1;
+  $sel_query= "Select * from annual_project where `source`='Sangguniang Kabataan Fund' ORDER BY project_id desc";
+  $result = mysqli_query($db,$sel_query);
+  while ($row = mysqli_fetch_assoc($result)) { 
+?> 
                         <tr>
                             <td align="center" width="8%">
                                 <?php echo $row["aip"]; ?>
@@ -138,10 +139,9 @@ while ($row = mysqli_fetch_assoc($result)) { ?>
                             </td>
                             
 
-                            <?php $count++; }
-
-
-  $add=mysqli_query($db,'SELECT SUM(amount) from `annual_project` Where source="Sangguniang Kabataan Fund" and year = (SELECT MAX(year) from annual_project);');
+<?php 
+  $count++; }
+  $add=mysqli_query($db,'SELECT SUM(amount) from `annual_project` Where source="Sangguniang Kabataan Fund"');
   while($row1=mysqli_fetch_array($add))
   {
     $total=$row1['SUM(amount)'];

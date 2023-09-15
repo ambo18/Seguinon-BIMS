@@ -100,18 +100,14 @@ echo'
 <tbody>
 
 
-                    <?php
+<?php
+  $sql = "SELECT * FROM annual_project";
 
-  
-    $sql = "SELECT *
-        FROM annual_project
-        ";
-
-$count=1;
-$sel_query="SELECT * FROM annual_project ORDER BY project_id desc";
-$view = mysqli_query($db,$sel_query);
-while ($row = mysqli_fetch_assoc($view)){
- ?> 
+  $count=1;
+  $sel_query="SELECT * FROM annual_project ORDER BY project_id desc";
+  $view = mysqli_query($db,$sel_query);
+  while ($row = mysqli_fetch_assoc($view)){
+?> 
                 
 
                         <tr class="year_<?= $row['year']; ?>">

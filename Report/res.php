@@ -168,8 +168,23 @@
                                 margin-top>&emsp;&emsp;Pdf&emsp;&emsp;&nbsp;</button></td>
                     </tr>
 
+                    <tr>
+                        <td>All SK Voter
+                        </td>
+                        <td>
+                            <button type="submit" name="skvoter" class="btn btn-success">&emsp;&nbsp;&nbsp;Excel&emsp;&nbsp;&nbsp;&nbsp&nbsp</button>
+                            <button type="submit" name="skvoterpdf" class="btn btn-danger">&emsp;&emsp;Pdf&emsp;&emsp;&nbsp;</button>
+                        </td>
+                    </tr>
 
-
+                    <tr>
+                        <td>All Barangay Voter
+                        </td>
+                        <td>
+                            <button type="submit" name="brgyvoter" class="btn btn-success">&emsp;&nbsp;&nbsp;Excel&emsp;&nbsp;&nbsp;&nbsp&nbsp</button>
+                            <button type="submit" name="brgyvoterpdf" class="btn btn-danger">&emsp;&emsp;Pdf&emsp;&emsp;&nbsp;</button>
+                        </td>
+                    </tr>
 
                 </table>
             </form>
