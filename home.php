@@ -26,7 +26,7 @@ body {
 
 <frameset cols="20%,80%">
 <frame src="modules.php" name="FraLink">
-<frame src="dashboard.php" name="FraDisplay">
+<frame src="Resident_Profiling\Dash\index.php" name="FraDisplay">
 </frameset>
 <frame src="footer.php" name="FraDisplay">
 </frameset>

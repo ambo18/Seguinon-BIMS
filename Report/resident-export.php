@@ -185,6 +185,99 @@ Municipality of Salcedo<br>
     }
     }   
 
+//-------------FOR BARANGAY VOTERS---------------//
+
+if(isset($_POST["brgyvoter"]))
+    {
+     $query ="SELECT res_ID,
+    res_fName,
+    res_mName,
+    res_lName,
+    rs.suffix,
+    res_Bday,
+    rg.gender_Name,
+    rms.marital_Name,
+    rr.religion_Name,
+    rc.country_nationality,
+    rc.country_citizenship,
+    ro.occupation_Name,
+    ros.occuStat_Name,
+    res_Date_Record,
+    TIMESTAMPDIFF(YEAR,res_Bday,CURDATE()) AS Age,
+    (case  
+     when (TIMESTAMPDIFF(Month,res_Bday,CURDATE())<=14) then 'Non Voters'
+     when (TIMESTAMPDIFF(Month,res_Bday,CURDATE())>=18) then 'Barangay Voters'
+       end) Age_Stage 
+    FROM resident_detail rd 
+    LEFT JOIN ref_suffixname rs ON rd.suffix_ID = rs.suffix_ID 
+    LEFT JOIN ref_gender rg ON rd.gender_ID = rg.gender_ID
+    LEFT JOIN ref_marital_status rms ON rd.marital_ID = rms.marital_ID
+    LEFT JOIN ref_religion rr ON rd.religion_ID = rr.religion_ID 
+    LEFT JOIN ref_occupation ro ON rd.occupation_ID = ro.occupation_ID 
+    LEFT JOIN ref_occupation_status ros ON rd.occuStat_ID = ros.occuStat_ID 
+    LEFT JOIN ref_country rc ON rd.country_ID = rc.country_ID WHERE TIMESTAMPDIFF(YEAR,res_Bday,CURDATE())  >= 18";
+    $result = mysqli_query($db, $query);
+     if(mysqli_num_rows($result) > 0)
+     {
+      $output .= '
+    <br>
+      <center> Republic of the Philippines<br>
+    Province of Eastern Samar<br>
+    Municipality of Salcedo<br>
+        BARANGAY '.$brgy.'<br>
+    </center><br><br>
+    
+    
+       <table class="table" bordered="1">  
+          <th scope="col">ID</th>
+          <th scope="col">Firstname</th>
+          <th scope="col">Middle</th>
+          <th scope="col">Lastname</th>
+          <th scope="col">Suffix</th>
+          <th scope="col">Birthdate</th>
+          <th scope="col">Age</th>
+          <th scope="col">Marital</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Religion</th>
+            <th scope="col">Nationality</th>
+              <th scope="col">Citizenship</th>
+            <th scope="col">Occupation</th>
+             <th scope="col">Status</th>
+                <th scope="col">Date record</th>
+                        </tr>
+      ';
+      while($row = mysqli_fetch_array($result))
+      {
+       $output .= '
+        <tr>  
+                               <td>'.$row["res_ID"].'</td>  
+                                        <td>'.$row["res_fName"].'</td>  
+                                        <td>'.$row["res_mName"].'</td>  
+                                        <td>'.$row["res_lName"].'</td>  
+                                        <td>'.$row["suffix"].'</td> 
+                                          <td>'.$row["res_Bday"].'</td> 
+                                           <td>'.$row["Age"].'</td>  
+                                        <td>'.$row["marital_Name"].'</td>  
+                                        <td>'.$row["gender_Name"].'</td> 
+                                        <td>'.$row["religion_Name"].'</td>
+                                        <td>'.$row["country_nationality"].'</td>  
+                                        <td>'.$row["country_citizenship"].'</td>    
+                                         <td>'.$row["occupation_Name"].'</td>   
+                                          <td>'.$row["occuStat_Name"].'</td>
+                                          <td>'.$row["res_Date_Record"].'</td>  
+                        </tr>
+       ';
+      }
+      $output .= '</table> <br><br><br><br>Prepared By:<br><br> <br>
+       Signature: ___________________________<br>
+       Name:<br>
+       Position:';
+      header('Content-Type: application/xls');
+      header('Content-Disposition: attachment; filename=Barangay-Voter-Resident-report.xls');
+      echo $output;
+    }
+    } 
+
  //-------------FOR  MALE-------------------//
 
 
@@ -1383,6 +1476,126 @@ LEFT JOIN ref_country rc ON rd.country_ID = rc.country_ID WHERE TIMESTAMPDIFF(YE
       $obj_pdf->Output('List of SK-Voters.pdf', 'I');  
  }
 
+ function fetch_data14()  
+    {  
+         $output = '';  
+         include('dbcon.php');  
+         $sql = "SELECT res_ID,
+   res_fName,
+   res_mName,
+   res_lName,
+   res_Bday,
+   rg.gender_Name,
+   rms.marital_Name,
+   rr.religion_Name,
+   rc.country_citizenship,
+   res_Date_Record,
+   TIMESTAMPDIFF(YEAR,res_Bday,CURDATE()) AS Age,
+   (case  
+    when (TIMESTAMPDIFF(Month,res_Bday,CURDATE())<=13) then 'Non Voters'
+    when (TIMESTAMPDIFF(Month,res_Bday,CURDATE())>=18) then 'Barangay Voters'
+      end) Age_Stage 
+   FROM resident_detail rd 
+   LEFT JOIN ref_gender rg ON rd.gender_ID = rg.gender_ID
+   LEFT JOIN ref_marital_status rms ON rd.marital_ID = rms.marital_ID
+   LEFT JOIN ref_religion rr ON rd.religion_ID = rr.religion_ID 
+   LEFT JOIN ref_country rc ON rd.country_ID = rc.country_ID WHERE TIMESTAMPDIFF(YEAR,res_Bday,CURDATE())  >= 18";  
+         $result = mysqli_query($db, $sql);  
+         while($row = mysqli_fetch_array($result))  
+         {       
+         $output .= '<tr>  
+                             
+                              <td>'.$row["res_ID"].'</td>  
+                                       <td>'.$row["res_fName"].'</td>  
+                                       <td>'.$row["res_mName"].'</td>  
+                                       <td>'.$row["res_lName"].'</td>  
+                                         <td>'.$row["res_Bday"].'</td> 
+                                        <td>'.$row["Age"].'</td> 
+                                       <td>'.$row["marital_Name"].'</td>  
+                                       <td>'.$row["gender_Name"].'</td> 
+                                       <td>'.$row["religion_Name"].'</td>  
+                                       <td>'.$row["country_citizenship"].'</td>    
+                                         <td>'.$row["res_Date_Record"].'</td>  
+                        </tr>  
+                             ';  
+         }  
+         return $output;  
+    }  
+    if(isset($_POST["brgyvoterpdf"]))  
+    {  
+         require_once('vendor/tcpdf/tcpdf.php');  
+            $sqll = "SELECT * FROM ref_logo WHERE logo_ID=1"; 
+           $resultt = mysqli_query($db, $sqll); 
+           $roww = mysqli_fetch_array($resultt);
+        
+        
+           $sqll2 = "SELECT * FROM ref_logo WHERE logo_ID=2"; 
+           $resultt2 = mysqli_query($db, $sqll2); 
+           $roww2 = mysqli_fetch_array($resultt2);
+        
+         $obj_pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);  
+         $obj_pdf->SetCreator(PDF_CREATOR);  
+         $obj_pdf->SetTitle("Resident List");  
+         $obj_pdf->SetHeaderData('', '', PDF_HEADER_TITLE, PDF_HEADER_STRING);  
+         $obj_pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));  
+         $obj_pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));  
+         $obj_pdf->SetDefaultMonospacedFont('helvetica');  
+         $obj_pdf->SetFooterMargin(PDF_MARGIN_FOOTER);  
+         $obj_pdf->SetMargins(PDF_MARGIN_LEFT, '5', PDF_MARGIN_RIGHT);  
+         $obj_pdf->setPrintHeader(false);  
+         $obj_pdf->setPrintFooter(false);  
+         $obj_pdf->SetAutoPageBreak(TRUE, 10);  
+         $obj_pdf->SetFont('helvetica', '', 12);  
+         $obj_pdf->AddPage('L');  
+         $content = '';  
+         $content .= ' <br>
+   <br>
+                           <center> 
+                                      <table><tr> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<td width="20%"> <img src="data:image/jpeg;base64,'.base64_encode($roww['logo_img'] ).'" height="80" width="100" class="img-circle img-responsive"/>  </td>
+                                      
+                                      <td>
+                               &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;Republic of the Philippines<br>
+                               &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;Province of Eastern Samar<br>
+   &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;Municipality of Salcedo<br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BARANGAY '.$brgy.' <br><br><br>    </td>
+                              
+                              
+                          
+                           
+                           
+                          <td width="20%"> <img src="data:image/jpeg;base64,'.base64_encode($roww2['logo_img'] ).'" height="80" width="100" class="img-circle img-responsive "/>  
+                                          </td> 
+   
+                       </tr></table> </center>
+      <br>
+      List of all Barangay Voters:
+      <br>
+      <br>  
+         <table border="1" cellspacing="0" cellpadding="3">  
+              <tr>  
+                  <th width="3%">ID</th>
+         <th width="14%">Firstname</th>
+         <th width="14%">Middle</th>
+         <th width="14%">Lastname</th>
+         <th width="10%">Birthdate</th>
+         <th width="4%">Age</th>
+         <th width="7%">Marital</th>
+           <th width="7%">Gender</th>
+           <th width="8%">Religion</th>
+             <th width="9%">Citizenship</th>
+               <th width="10%">Date record</th>  
+              </tr>  
+         ';  
+         $content .= fetch_data14();  
+         $content .= '</table><br><br><br><br>
+              Prepared By: <br>
+      Signature: ___________________________<br>
+     Name:<br>
+      Position:';  
+         $obj_pdf->writeHTML($content);  
+         $obj_pdf->Output('List of Barangay-Voters.pdf', 'I');  
+    }
+
  function fetch_data2()  
  {  
       $output = '';  
@@ -1497,6 +1710,7 @@ LEFT JOIN ref_country rc ON rd.country_ID = rc.country_ID WHERE gender_Name = 'M
       $obj_pdf->writeHTML($content);  
       $obj_pdf->Output('List of male.pdf', 'I');  
  }
+ 
  function fetch_data3()  
  {  
       $output = '';  

@@ -81,6 +81,15 @@
 
     <script src="../js/loader1.js"></script>
 
+    <style>
+        .chart-container {
+            width: 49.7%;
+            height: 800px;
+            display: inline-block;
+            background-color: #f8f8f8;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -259,13 +268,13 @@
         google.charts.load('current', {
             'packages': ['corechart']
         });
-        google.charts.setOnLoadCallback(drawChart);
+        google.charts.setOnLoadCallback(drawChart1);
+        google.charts.setOnLoadCallback(drawChart2);
 
-        function drawChart() {
+        function drawChart1() {
 
             var data = google.visualization.arrayToDataTable([
                 ['Task', 'Hours per Day'],
-
 
                 ['Infant', <?php echo $query11; ?>],
                 ['Children', <?php echo $query1111111; ?>],
@@ -283,10 +292,33 @@
 
             chart.draw(data, options);
         }
+
+        function drawChart2() {
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+
+                ['Non Voter(s)', <?php echo $non_voter; ?>],
+                ['Sk Voter(s)', <?php echo $sk_voter; ?>],
+                ['Barangay Voter(s)', <?php echo $barangay_voter; ?>],
+            ]);
+
+            var options = {
+                title: 'Voters Graph',
+                colors: ['#FF00FF', '#8A2BE2', '#E75480'] 
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('voterspiechart'));
+
+            chart.draw(data, options);
+        }
+
+        
         </script>
 
         <body>
-            <div id="piechart" style="width: 1200px; height: 800px;"></div>
+            <div id="piechart" class="chart-container"></div>
+
+            <div id="voterspiechart" class="chart-container"></div>
         </body>
         
     </div>
