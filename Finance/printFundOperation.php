@@ -2,10 +2,16 @@
  include('dbcon.php');
  require('fpdf/fpdf.php');
 $year=$_GET['year'];
-  $sql = mysqli_query($db , "SELECT * FROM accounts where Position = 'Barangay Captain'");
+  $sql = mysqli_query($db , "SELECT * FROM accounts where Position = 'Barangay Secretary'");
   while($row = mysqli_fetch_assoc($sql))
   {
-    $_SESSION['captain'] = $row['Fullname'];
+    $_SESSION['secretary'] = $row['Fullname'];
+  }
+
+  $sql1 = mysqli_query($db, "SELECT * FROM brgy_official WHERE Position = 'Barangay Captain'");
+  while ($row = mysqli_fetch_assoc($sql1))
+  {
+    $captain = $row['Fullname'];
   }
 
 function fi_result()
@@ -127,13 +133,13 @@ $pdf->SetFont('Times','',11);
     $pdf->Cell(320,6,"",0,1,'C');
     $pdf->Cell(20,6,"Barangay ",0,0,'C');
      $pdf->Cell(29,6,":",0,0,'C');
-    $pdf->Cell(20,6,"Tambo Malaki",0,1,'C');
+    $pdf->Cell(-3,6,"Seguinon",0,1,'C');
      $pdf->Cell(30,6,"Municipality of ",0,0,'C');
     $pdf->Cell(9,6,":",0,0,'C');
-    $pdf->Cell(28,6,"Indang",0,1,'C');
+    $pdf->Cell(15,6,"Salcedo",0,1,'C');
     $pdf->Cell(24,6,"Province of ",0,0,'C');
     $pdf->Cell(21,6,":",0,0,'C');
-    $pdf->Cell(15,6,"Cavite",0,1,'C');
+    $pdf->Cell(16,6,"Eastern Samar",0,1,'C');
     
     $pdf->Ln(10);
     
@@ -221,12 +227,12 @@ $pdf->SetFont('Times','',11);
     $pdf->SetFont('Arial','BU',11);
    // $this->Cell(300,5,"$secname",5,0,'L');
    // $this->Cell(36,5,"$name",5,1,'R');
-    $pdf->Ln(3);
-    $pdf->SetFont('Arial','',11);
-    $pdf->Cell(0.5,-10, isset($_SESSION['Fullname'])? $_SESSION['Fullname'] : '', 0, 0, 'L');
-    $pdf->Cell(60,5, isset($_SESSION['position'])? $_SESSION['position'] : '',0,0,'L');
-    $pdf->Cell(120,-10, isset($_SESSION['captain'])? $_SESSION['captain'] : '', 0, 0, 'R');
-    $pdf->Cell(-5,5,"Punong Barangay",0,0,'R');
+   $pdf->Ln(3);
+   $pdf->SetFont('Arial','',13);
+   $pdf->Cell(0.5,-10, $_SESSION['secretary'], 0, 0, 'L');
+   $pdf->Cell(60,5, $_SESSION['position'],0,0,'L');
+   $pdf->Cell(120,-10, $captain, 0, 0, 'R');
+   $pdf->Cell(-5,5,"Punong Barangay",0,0,'R');
 
 $pdf->Output();
 

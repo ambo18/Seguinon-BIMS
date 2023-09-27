@@ -3,12 +3,11 @@ body{
     padding-top: 5%;
 }
 
-
 .head{
 	text-align: center;
 	font-family: 'Arial';
 	color: White;
-	background-color: #337ab7;
+	background-color: #1e90ff;
 	border-radius: 5px;
 	font-size: 50;
 }

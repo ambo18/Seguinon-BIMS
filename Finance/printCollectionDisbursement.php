@@ -5,10 +5,16 @@ require('fpdf/fpdf.php');
   include("dbcon.php");
   $year=$_GET['year'];
   $month=$_GET['month'];
-  $sql = mysqli_query($db , "SELECT * FROM accounts where Position = 'Barangay Captain'");
+  $sql = mysqli_query($db , "SELECT * FROM accounts where Position = 'Barangay Secretary'");
   while($row = mysqli_fetch_assoc($sql))
   {
-    $_SESSION['captain'] = $row['Fullname'];
+    $_SESSION['secretary'] = $row['Fullname'];
+  }
+
+  $sql1 = mysqli_query($db, "SELECT * FROM brgy_official WHERE Position = 'Barangay Captain'");
+  while ($row = mysqli_fetch_assoc($sql1))
+  {
+    $captain = $row['Fullname'];
   }
  
   function fetch_data() 
@@ -235,11 +241,11 @@ include("dbcon.php");
     // Title
     $pdf->Cell(400,5,"",0,1,'C');
     $pdf->Cell(0,5,"Republic of the Philippines",0,1,'C');
-    $pdf->Image('TAMBO MALAKI.png',30,6,30);
+    $pdf->Image('../Picture/logo.png',30,6,30);
     $pdf->Image('INDANG.png',150,9,25);
-    $pdf->Cell(0,5,"Province of Cavite",0,1,'C');
-    $pdf->Cell(0,5,"Municipal of Indang",0,1,'C');
-    $pdf->Cell(0,5,"BARANGAY TAMBO MALAKI",0,0,'C');
+    $pdf->Cell(0,5,"Province of Eastern Samar",0,1,'C');
+    $pdf->Cell(0,5,"Municipality of Salcedo",0,1,'C');
+    $pdf->Cell(0,5,"BARANGAY SEGUINON",0,0,'C');
     $pdf->Cell(0,5," ",0,0,'C');
     
     $pdf->SetFont('Arial','B',11);
@@ -306,9 +312,9 @@ include("dbcon.php");
    // $this->Cell(36,5,"$name",5,1,'R');
      $pdf->Ln(3);
     $pdf->SetFont('Arial','',13);
-    $pdf->Cell(0.5,-10, $_SESSION['Fullname'], 0, 0, 'L');
+    $pdf->Cell(0.5,-10, $_SESSION['secretary'], 0, 0, 'L');
     $pdf->Cell(60,5, $_SESSION['position'],0,0,'L');
-    $pdf->Cell(120,-10, $_SESSION['captain'], 0, 0, 'R');
+    $pdf->Cell(120,-10, $captain, 0, 0, 'R');
     $pdf->Cell(-5,5,"Punong Barangay",0,0,'R');
 
 

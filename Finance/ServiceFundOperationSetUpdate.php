@@ -22,7 +22,7 @@ session_start();
 
 </head>
 
-<body>
+<body style="margin-top: 5%;">
     <link href="Style.css" type="text/css" rel="stylesheet">
     <br>
     <div class="head">

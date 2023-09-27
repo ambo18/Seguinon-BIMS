@@ -1,4 +1,4 @@
-<html style="background: url('Picture/logo.png') center/contain no-repeat;">
+<html style="background: url('Picture/logo.png') center/cover no-repeat;">
 <title>BIMS - About</title>
 <link rel="shortcut icon" href="Picture/logo.png" />
 
@@ -60,7 +60,7 @@
 
 <body style="background-color: transparent !important;">
 
-    <div class="container" style="padding-top: 5em; padding-left: 15%;">
+    <div class="container" style="padding-top: 5em; padding-left: 8%;">
 
 
         <div class="col-sm-3 card ">

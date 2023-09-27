@@ -1,8 +1,13 @@
+html {
+	background-size: 150%;
+}
+
 body {
 	overflow: scroll;
 	color: #444444;
 	font-family: calibri;
 }
+
 .nav {
 	background-color: #000000;
 	border: none;
@@ -14,6 +19,7 @@ body {
 	text-transform: uppercase;
 	font-family: calibri;
 }
+
 .nav a {
     float: right;
 	display: block;
@@ -29,7 +35,22 @@ body {
     	color: white;
 } 
 .nav a:active {
-	background: #99c74b;
+	background: #8a9df0;
+}
+
+.brgy-logo {
+	margin-left: 30px;
+}
+
+.brgy-logo img, p {
+	display: block;
+	float: left;
+}
+
+.brgy-logo p {
+	color: #3d4ee7;
+	font-weight: bold;
+	margin-left: 10px;
 }
 
 .container { 
@@ -40,6 +61,17 @@ body {
 	margin-right: 1%;
 
 }
+
+.logo {
+	text-align: center;
+	margin-top: 5%;
+}
+
+.logo img {
+	height: 35%;
+	width: 20%;
+}
+
 .right {
 	width: auto;
 	height: absolute;
@@ -52,8 +84,8 @@ body {
 	margin-bottom: 5%;
 	padding-bottom: 1%;
 	box-shadow: 0px 0px 50px rgba(0,0,0,.4);
-
 }
+
 .right .banner {
 	width: auto;
   	height: 30px;
@@ -70,6 +102,13 @@ body {
 	font-family: Arial;
 	padding-bottom: 2%;
 }
+
+center > img {
+	height: 70px;
+	width: 70px;
+	clip-path: circle(50%);
+}
+
 input[type=text]{
 	text-align:center;
 	width: 90%;

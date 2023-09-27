@@ -13,7 +13,7 @@
 
 		<link href="Style.css" type="text/css" rel="stylesheet">
 	</head>
-	    <body><br>
+	    <body style="margin-top: 5%;">
 	        <br>
 	        <div class="head">
 	            <font size="5">Print Records</font>

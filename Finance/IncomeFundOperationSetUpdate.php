@@ -22,7 +22,7 @@ $iid = $_GET['iid'];
 
 </head>
 
-<body>
+<body style="margin-top: 5%;">
     <link href="Style.css" type="text/css" rel="stylesheet">
     <br>
     <div class="head">

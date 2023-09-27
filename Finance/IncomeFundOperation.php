@@ -18,7 +18,7 @@
 
     </head>
 
-    <body>
+    <body style="margin-top: 5%;">
 
         <form action="IncomeFundOperationInsert.php" method="POST">
             <div class="head">

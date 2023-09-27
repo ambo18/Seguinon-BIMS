@@ -12,7 +12,7 @@
     <link href="vendor/css/dataTables.bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body style="margin-top: 5%;">
     <br><br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button type="button" class="btn btn-primary col-lg-offset-0"
