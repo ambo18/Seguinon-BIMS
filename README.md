@@ -30,12 +30,12 @@ The Web-based Barangay Information Management System is developed to streamline 
 
 To run the Web-based Barangay Information Management System locally using XAMPP, follow these steps:
 
-1. **Clone the repository**: `git clone https://github.com/yourusername/barangay-information-management.git`
+1. **Clone the repository**: `git clone https://github.com/ambo18/Seguinon-BIMS.git`
 2. **Install XAMPP**: Download and install XAMPP from [here](https://www.apachefriends.org/index.html).
 3. **Start Apache and MySQL**: Open XAMPP Control Panel and start Apache and MySQL services.
 4. **Database Setup**: Use PHPMyAdmin (accessible through XAMPP) to create a new database and import the provided SQL file to set up the database schema.
 5. **Move Files**: Move the cloned repository to the `htdocs` directory of your XAMPP installation.
-6. **Access the application**: Open your web browser and navigate to `http://localhost/barangay-information-management` to access the Web-based Barangay Information Management System.
+6. **Access the application**: Open your web browser and navigate to `http://localhost/Seguinon-BIMS` to access the Web-based Barangay Information Management System.
 
 ## Usage
 
