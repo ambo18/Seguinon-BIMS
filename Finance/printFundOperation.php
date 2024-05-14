@@ -163,34 +163,21 @@ $pdf->SetFont('Times','',11);
     $pdf->Cell(115,10,"Total Income" ,'LR',0,'L');//Maintenance and Other Operating Expenses
     $pdf->Cell(40,10,"" ,'LR',0,'C');
     $pdf->Cell(40,10,number_format(fi_result(),2),'LR',1,'R');
-    //SPACING
-    $pdf->Cell(115,10,"" ,'LR',0,'C');
-    $pdf->Cell(40,10," " ,'LR',0,'C');
-    $pdf->Cell(40,10,"" ,'LR',1,'C');
+	//QUERY
+	$pdf->SetFont('Arial','',11);
+	$ress = mysqli_query($db, "SELECT * FROM finance_fundoperation_psset ps, finance_fundoperation_ps pp WHERE ps.service_id=pp.service_id AND ps.service_year LIKE '%$year%'");
+	while($row = mysqli_fetch_array($ress)){
+		$pdf->Cell(115,10,$row["service_type"] ,'LR',0,'C');
+	$pdf->Cell(40,10,$row["service_code"] ,'LR',0,'C');
+	$pdf->Cell(40,10,number_format($row["service_amount"],2) ,'LR',1,'R');
+	}
     //TOTAL
     $pdf->SetFont('Arial','B',11);
     $pdf->Cell(115,10,"Personal Services" ,'LR',0,'L');
     $pdf->Cell(40,10," " ,'LR',0,'C');
     $pdf->Cell(40,10,number_format(PS_result(),2) ,'LR',1,'R');
-    //QUERY
-    $pdf->SetFont('Arial','',11);
-    $ress = mysqli_query($db, "SELECT * FROM finance_fundoperation_psset ps, finance_fundoperation_ps pp WHERE ps.service_id=pp.service_id AND ps.service_year LIKE '%$year%'");
-    while($row = mysqli_fetch_array($ress)){
-    	$pdf->Cell(115,10,$row["service_position"] ,'LR',0,'C');
-    $pdf->Cell(40,10,$row["service_code"] ,'LR',0,'C');
-    $pdf->Cell(40,10,number_format($row["service_amount"],2) ,'LR',1,'R');
-    }
-    //SPACING
 
-    $pdf->Cell(115,10,"" ,'LR',0,'C');
-    $pdf->Cell(40,10," " ,'LR',0,'C');
-    $pdf->Cell(40,10,"" ,'LR',1,'C');
-    //TOTAL
-    $pdf->SetFont('Arial','B',11);
-    $pdf->Cell(115,10,"Maintenance and Other Operating Expenses " ,'LR',0,'L');
-    $pdf->Cell(40,10,"" ,'LR',0,'C');
-    $pdf->Cell(40,10,number_format(fm_result(),2),'LR',1,'R');
-    //QUERY
+	//QUERY
     $pdf->SetFont('Arial','',11);
     $resss = mysqli_query($db, "SELECT * FROM finance_fundoperation_mooeset ms, finance_fundoperation_mooe mm WHERE ms.mooe_id=mm.mooe_id AND ms.mooe_year LIKE '%$year%'");
 		while($row = mysqli_fetch_array($resss)){
@@ -198,24 +185,25 @@ $pdf->SetFont('Times','',11);
     		$pdf->Cell(40,10,$row["mooe_code"] ,'LR',0,'C');
     		$pdf->Cell(40,10,number_format($row["mooe_amount"],2) ,'LR',1,'R');
     }
-    //SPACING
-    $pdf->Cell(115,10,"" ,'LR',0,'C');
-    $pdf->Cell(40,10," " ,'LR',0,'C');
-    $pdf->Cell(40,10,"" ,'LR',1,'C');
+    //TOTAL
+    $pdf->SetFont('Arial','B',11);
+    $pdf->Cell(115,10,"Maintenance and Other Operating Expenses " ,'LR',0,'L');
+    $pdf->Cell(40,10,"" ,'LR',0,'C');
+    $pdf->Cell(40,10,number_format(fm_result(),2),'LR',1,'R');
+
+	//QUERY
+	$pdf->SetFont('Arial','',11);
+	$ressss = mysqli_query($db, "SELECT * FROM finance_fundoperation_noeset ns, finance_fundoperation_noe nn WHERE ns.noe_id=nn.noe_id AND ns.noe_year LIKE '%$year%'");
+		while($row = mysqli_fetch_array($ressss)){
+		$pdf->Cell(115,10,$row["noe_type"] ,'LR',0,'C');
+		$pdf->Cell(40,10,$row["noe_code"] ,'LR',0,'C');
+		$pdf->Cell(40,10,number_format($row["noe_amount"],2) ,'LR',1,'R');
+	}
     //TOTAL
     $pdf->SetFont('Arial','B',11);
     $pdf->Cell(115,10,"Non-Office Expenditures " ,'LR',0,'L');
     $pdf->Cell(40,10,"" ,'LR',0,'C');
     $pdf->Cell(40,10,number_format(fn_result(),2),'LR',1,'R');
-    //QUERY
-    $pdf->SetFont('Arial','',11);
-    $ressss = mysqli_query($db, "SELECT * FROM finance_fundoperation_noeset ns, finance_fundoperation_noe nn WHERE ns.noe_id=nn.noe_id AND ns.noe_year LIKE '%$year%'");
-			while($row = mysqli_fetch_array($ressss)){
-			$pdf->Cell(115,10,$row["noe_type"] ,'LR',0,'C');
-    		$pdf->Cell(40,10,$row["noe_code"] ,'LR',0,'C');
-    		$pdf->Cell(40,10,number_format($row["noe_amount"],2) ,'LR',1,'R');
-
-						}
 	$pdf->Cell(195,0,'','T',1,'',true);
 
     $pdf->Ln(10);
@@ -234,7 +222,11 @@ $pdf->SetFont('Times','',11);
    $pdf->Cell(120,-10, $captain, 0, 0, 'R');
    $pdf->Cell(-5,5,"Punong Barangay",0,0,'R');
 
-$pdf->Output();
+// Output the PDF as a file when the "Download PDF" button is clicked
+if (isset($_POST['download_pdf'])) {
+    $pdf->Output('D', 'Barangay_Budget_PDF.pdf');
+    exit;
+}
 
 ?>
 
@@ -243,10 +235,11 @@ $pdf->Output();
 
 <link rel="stylesheet" type="text/css" href="tabledesign.css" />
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" / >
+<link href="Style.css" type="text/css" rel="stylesheet">
 
 	</head>
 <body>
-<div class="container">
+<div class="container" style="padding-top: 10%;">
 <center>
 <p>STATEMENT OF FUND OPERATION</p>
 
@@ -344,9 +337,10 @@ echo $year;
 
  </table>
  <br>
-  					<form method="post">  
-                          <input type="submit" name="create_pdf" class="btn btn-info" value="Create PDF">  
-                     </form>
+ <form method="post">
+        <button type="submit" class="btn btn1-success" name="download_pdf">Download PDF</button>
+    </form>
+
 
 
 

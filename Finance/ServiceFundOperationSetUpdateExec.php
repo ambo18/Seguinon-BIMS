@@ -1,40 +1,43 @@
 <?php
 session_start();
-	include("dbcon.php");
-	$id = $_POST['service_id'];
-	$sp = mysqli_real_escape_string($db, $_POST['service_position']);
-	$sp = ucwords(strtolower($sp));
+include("dbcon.php");
 
-	$ma = $_POST['service_amount'];
-		$ma = str_replace(',', '', $ma);
+$id = mysqli_real_escape_string($db, $_POST['service_id']);
+$sp = ucwords(strtolower($_POST['service_position']));
+$ma = str_replace(',', '', $_POST['service_amount']);
+$my = mysqli_real_escape_string($db, $_POST['service_year']);
 
-	$my= $_POST['service_year'];
+if (!empty($ma) && is_numeric($ma)) {
+    $dy = date('Y');
+    $d = $dy + 1;
 
- 	if($ma != 0){
-$dy=date('Y');
-$d=$dy+1;
+    // Check if the record exists
+    $result = mysqli_query($db, "SELECT service_year, service_setid FROM finance_fundoperation_psset WHERE `service_setid`='$id'");
 
+    if (mysqli_num_rows($result) > 0) {
+        // Record exists, proceed with update
+        $sql = "UPDATE `finance_fundoperation_psset` SET `service_position` = ?, `service_amount` = ?, `service_year` = ?  WHERE `service_setid` = ?";
 
-$date = mysqli_query($db, "SELECT service_year, service_setid FROM finance_fundoperation_psset WHERE `service_year` = $d AND `service_setid`='$id'");
-if(mysqli_num_rows($date) > 0 ){
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param("ssds", $sp, $ma, $my, $id);
 
-        $sql = "UPDATE `finance_fundoperation_psset` SET `service_position` = '$sp', `service_amount` = '$ma', `service_year` = '$my'  WHERE `service_setid` = '$id'";
-		 		if ($db->query($sql) === TRUE) 
-		 		{
-					echo '<script> alert ("Data Updated")</script>';	
-					echo '<script> window.location = "ServiceFundOperationSetView.php"</script>';			
-				}
-				}
-				else{
-		echo "<script>alert('Record cannot be updated');</script>";
-	echo'<script> window.location = "ServiceFundOperationSetView.php"</script>';
+        if ($stmt->execute()) {
+            echo '<script>alert("Data Updated")</script>';
+            echo '<script>window.location = "ServiceFundOperationSetView.php"</script>';
+        } else {
+            echo '<script>alert("Error updating record")</script>';
+            echo '<script>window.location = "ServiceFundOperationSetView.php"</script>';
+        }
+
+        $stmt->close();
+    } else {
+        // Record does not exist
+        echo '<script>alert("Record does not exist or cannot be updated")</script>';
+        echo '<script>window.location = "ServiceFundOperationSetView.php"</script>';
+    }
+} else {
+    // Invalid amount
+    echo '<script>alert("Please enter a valid amount")</script>';
+    echo '<script>window.location = "ServiceFundOperationSetView.php"</script>';
 }
-}
-else{
-	echo'<script>alert("Pkease enter a valid amount")</script>';
-					echo '<script> window.location = "ServiceFundOperationSetView.php"</script>';			
-
-}
-
 ?>
-

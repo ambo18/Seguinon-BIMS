@@ -1284,12 +1284,10 @@ LEFT JOIN ref_country rc ON rd.country_ID = rc.country_ID";
         $sqll = "SELECT * FROM ref_logo WHERE logo_ID=1"; 
         $resultt = mysqli_query($db, $sqll); 
         $roww = mysqli_fetch_array($resultt);
-     
-     
+   
         $sqll2 = "SELECT * FROM ref_logo WHERE logo_ID=2"; 
         $resultt2 = mysqli_query($db, $sqll2); 
         $roww2 = mysqli_fetch_array($resultt2);
-     
      
       $obj_pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);  
       $obj_pdf->SetCreator(PDF_CREATOR);  

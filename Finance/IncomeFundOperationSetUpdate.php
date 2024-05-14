@@ -4,7 +4,8 @@ session_start();
 $id = $_GET['id'];
 $year =  $_GET['year'];
 $iid = $_GET['iid'];
- ?>
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,13 +18,12 @@ $iid = $_GET['iid'];
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/css/mis.css" rel="stylesheet">
     <link href="vendor/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="Style.css" type="text/css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.13.4/jquery.mask.min.js"></script>
-
 </head>
 
 <body style="margin-top: 5%;">
-    <link href="Style.css" type="text/css" rel="stylesheet">
     <br>
     <div class="head">
         <font size="5">Income Update</font>
@@ -100,16 +100,13 @@ $iid = $_GET['iid'];
                             <td>
                                 <div class="form-group col-md-4">
                                     <label for="income_year">Year</label>
-                            <td><input type="number" class="form-control" readonly
+                            <td><input type="number" class="form-control"
                                     value="<?php echo $row1["income_year"]; ?>" required name="income_year" size="50">
                                 </div>
                                 </div>
-                        </tr>
-
-                </form>
-
-
-                </table>
+                        </tr>     
+                        
+                        </table>
 
                 <button type="submit" value="Submit" class="btn btn-primary">Update</button>
                 <input type="hidden" class="form-control" value="<?php echo $id; ?>" required name="id">

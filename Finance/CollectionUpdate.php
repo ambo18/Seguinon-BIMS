@@ -70,7 +70,7 @@ session_start();
                                 <td>
                                     <div class="form-group col-md-4">
                                         <label for="collection_date">Date</label>
-                                <td><input type="date" class="form-control" readonly
+                                <td><input type="date" class="form-control"
                                         value="<?php echo $row["collection_date"]; ?>" required name="collection_date"
                                         size="50">
                             </tr>
@@ -93,12 +93,11 @@ session_start();
                                         name="collection_amount" size="50"></td>
                             </tr>
                             <br>
-
-                            <td></td>
-
-                            <td><input type="submit" value="Update" class="btn btn-primary"></td>
                             </tr>
                     </table>
+
+                    <input type="submit" value="Update" class="btn btn-primary">
+
                 </form>
                 </font>
             </center>

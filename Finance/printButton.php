@@ -16,7 +16,7 @@
 	    <body style="margin-top: 5%;">
 	        <br>
 	        <div class="head">
-	            <font size="5">Print Records</font>
+	            <font size="5">View Records</font>
 	        </div>
 	        <br><br>
 	        <center>
@@ -24,6 +24,7 @@
 	            <h3>
 	                <div class="fontstyle">Fund Operation</div>
 	            </h3>
+
 	            <form action="printFundOperation.php" target="Fradisplay" method="GET">
 	                <tr>
 	                    <td>
@@ -31,10 +32,10 @@
 	                        <div class="form-group col-lg-offset-4 col-md-4">
 	                            <label for="year"></label>
 	                    <td><?php
-				include('dbcon.php');
-				$query = $db->query("SELECT DISTINCT income_year FROM finance_fundoperation_incomeset ORDER BY income_year DESC");
-				$rowCount = $query->num_rows;
-			?>
+								include('dbcon.php');
+								$query = $db->query("SELECT DISTINCT income_year FROM finance_fundoperation_incomeset ORDER BY income_year DESC");
+								$rowCount = $query->num_rows;
+							?>
 	                        <form action="ViewFundOperation.php" method="POST">
 	                            <select name="year" class="form-control">
 	                                <option value="">Select Year with Available Records</option>
@@ -55,7 +56,7 @@
 	                    </div>
 	                </tr>
 	                <div class="clearfix"></div>
-	                <td><input type="submit" name="submit" value="Print" class="btn btn1-success" target="Fradisplay"></td>
+	                <td><input type="submit" name="submit" value="View" class="btn btn1-success" target="Fradisplay"></td>
 
 	            </form>
 
@@ -108,13 +109,14 @@
 							</td>
 							<br><br>
 								<td>
-									<div class="clearfix"><input type="submit" name="submit" value="Print" class="btn btn1-success"
+									<div class="clearfix"><input type="submit" name="submit" value="View" class="btn btn1-success"
 											target="Fradisplay"></div>
 								</td>
 							</td>
 						</div>
 					</tr>
 	            </form>
+
 	        </center>
 
 

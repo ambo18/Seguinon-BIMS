@@ -226,7 +226,7 @@ else{
                                           if($resultCheck_ret > 0){
                                             while($row_ret = mysqli_fetch_assoc($result_ret)){
                                               ?>
-                                              <option name="forms" value="<?php echo $row_ret['clearance_form'];?>"><?php echo $row_ret['clearance_form']." "."-"." ".$row_ret['purpose'];?></option>
+                                              <option name="forms" value="<?php echo $row_ret['clearance_form'];?>"><?php echo $row_ret['clearance_form'];?></option>
                                               <?php
                                             }
                                           }

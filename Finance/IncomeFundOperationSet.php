@@ -76,7 +76,7 @@
 
 	                <div class="form-group col-md-4">
 	                    <label for="income_year">Year</label>
-	                    <input class="form-control" type="text" readonly name="income_year"
+	                    <input class="form-control" type="text" name="income_year"
 	                        value="<?php $d=date('Y'); echo $d+1; ?>">
 
 	                </div>

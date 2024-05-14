@@ -15,7 +15,7 @@
   <nav class="navbar navbar-fixed-top">
     <div class="navbar-header">
 
-      <div class="navbar-brand" id="brand" style="color: #f2f2f2">BARANGAY OFFICIALS |</div>
+      <div class="navbar-brand" id="brand" style="color: #f2f2f2"><a href="index.php">BARANGAY OFFICIALS</a> |</div>
     </div>
     <div>
         <?php include('nav.php'); ?>

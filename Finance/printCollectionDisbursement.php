@@ -242,7 +242,7 @@ include("dbcon.php");
     $pdf->Cell(400,5,"",0,1,'C');
     $pdf->Cell(0,5,"Republic of the Philippines",0,1,'C');
     $pdf->Image('../Picture/logo.png',30,6,30);
-    $pdf->Image('INDANG.png',150,9,25);
+    $pdf->Image('../Picture/salcedo.png',150,9,25);
     $pdf->Cell(0,5,"Province of Eastern Samar",0,1,'C');
     $pdf->Cell(0,5,"Municipality of Salcedo",0,1,'C');
     $pdf->Cell(0,5,"BARANGAY SEGUINON",0,0,'C');
@@ -318,7 +318,10 @@ include("dbcon.php");
     $pdf->Cell(-5,5,"Punong Barangay",0,0,'R');
 
 
-$pdf->Output();
+if (isset($_POST['download_pdf'])) {
+  $pdf->Output('D', 'Barangay_Budget_PDF.pdf');
+  exit;
+}
 
  ?>  
  <!DOCTYPE html>  
@@ -327,11 +330,12 @@ $pdf->Output();
       <head> 
       <link rel="stylesheet" type="text/css" href="../bootstrap.css"> 
       <link rel="stylesheet" type="text/css" href="css/bootstrap.css" / >
+      <link href="Style.css" type="text/css" rel="stylesheet">
                        
       </head>  
       <body>  <center>
            <br /><br />  
-           <div class="container" style="width:800px;">  
+           <div class="container" style="width:800px; padding-top: 5%;">  
                 <h3 align="center"></h3><br />  
                 <div class="table-responsive">  
                      <table class="table table-bordered">
@@ -367,7 +371,10 @@ $pdf->Output();
           echo fetch_2();
           ?>
                      </table>  
-                     <br />  
+                     <br /> 
+                     <form method="post">
+                        <button type="submit" class="btn btn1-success" name="download_pdf">Download PDF</button>
+                    </form> 
                      
                 </div>  
            </div>  

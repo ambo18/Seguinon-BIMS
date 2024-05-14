@@ -210,6 +210,7 @@ $today = date('Y-m-d');
     $db_res_mname = $row["res_mName"];
     $db_res_lname = $row["res_lName"];
     $db_res_bdate = $row["res_Bday"];
+    $db_voter_status = $row["voter_status"];
     $db_res_civilstatus = $row["marital_ID"];
     $db_res_gender = $row["gender_ID"];
     $db_res_height = $row["res_Height"];
@@ -222,16 +223,6 @@ $today = date('Y-m-d');
     $diff = date_diff(date_create($db_res_bdate), date_create($today));
     
     $age= $diff->format('%y');
-
-    if ($age >= 0 && $age <= 13) {
-      $voter_status = "Non Voter";
-    } elseif ($age >= 15 && $age <= 17) {
-        $voter_status = "SK Voter";
-    } elseif ($age >= 18) {
-        $voter_status = "Barangay Voter";
-    } else {
-        $voter_status = "Invalid Age";
-    }
   }
               
         
@@ -459,7 +450,7 @@ $db_res_unit = $row["address_brgy"];
   <div class="clearfix"></div>
 <div class="bot-border"></div>
 
-<div class="col-sm-5 col-xs-6 tital " >Voter Status:</div><div class="col-sm-7" > <?php echo $voter_status;?> </div>
+<div class="col-sm-5 col-xs-6 tital " >Voter Status:</div><div class="col-sm-7" > <?php echo $db_voter_status;?> </div>
   <div class="clearfix"></div>
 <div class="bot-border"></div>
 

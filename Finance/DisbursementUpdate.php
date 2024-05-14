@@ -1,5 +1,9 @@
 <?php 
 session_start();
+
+    $iid = $_GET['id'];
+
+
  ?>
 
 <!DOCTYPE html>
@@ -69,7 +73,7 @@ session_start();
                                 <td>
                                     <div class="form-group col-md-4">
                                         <label for="disbursement_date">Date</label>
-                                <td><input type="date" class="form-control" readonly
+                                <td><input type="date" class="form-control"
                                         value="<?php echo $row["disbursement_date"]; ?>" required
                                         name="disbursement_date">
                                     </div>
@@ -97,8 +101,12 @@ session_start();
                             </tr>
                             <br>
 
+                    </table>
 
-                            <td></td>
+                    <button type="submit" value="Update" class="btn btn-primary">Update</button>
+                    <input type="hidden" class="form-control" value="<?php echo $iid; ?>" required name="iiid">
+
+                </form>        
 
         </article>
     </section>

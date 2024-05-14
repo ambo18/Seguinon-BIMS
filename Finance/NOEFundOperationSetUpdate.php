@@ -95,7 +95,7 @@ $iid = $_GET['iid'];
                             <td>
                                 <div class="form-group col-md-4">
                                     <label for="noe_year">Year</label>
-                            <td><input type="number" class="form-control" readonly
+                            <td><input type="number" class="form-control"
                                     value="<?php echo $row1["noe_year"]; ?>" required name="noe_year" size="50">
                         </tr>
 

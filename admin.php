@@ -23,7 +23,6 @@ if (isset($_POST['submit']))
 
 			 		$fullname=$_POST['fullname'] ;
 			 		$username=$_POST['username'] ;
-					$emailaddress=$_POST['emailaddress'];
 					$password= $_POST['password'] ;					
 					$position= $_POST['position'] ;
 												
@@ -39,7 +38,6 @@ if (isset($_POST['submit']))
 	<thead> <tr>
 			<th> Fullname </th> 
 			<th> Username </th> 
-			<th> Email Address </th>
 			<th> Password </th>
 			<th> Position </th>
 			<th colspan="2">Action</th>
@@ -68,7 +66,6 @@ if (isset($_POST['submit']))
 				echo "<tr align='center'>";	
 				echo"<td><font color='black'>" .$test['Fullname']."</font></td>";
 				echo"<td><font color='black'>" .$test['Username']."</font></td>";
-				echo"<td><font color='black'>" .$test['Emailaddress']."</font></td>";
 				echo"<td><font color='black'>". $test['Password']. "</font></td>";
 				echo"<td><font color='black'>". $test['Position']. "</font></td>";	
 				echo"<td> <a href ='adminedit.php?ID=$id'onclick='return myFunction()'>Edit</a>";

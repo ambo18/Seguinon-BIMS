@@ -97,7 +97,7 @@ session_start();
                             <td>
                                 <div class="form-group col-md-4">
                                     <label for="mooe_year">Year</label>
-                            <td><input type="text" class="form-control" readonly
+                            <td><input type="text" class="form-control"
                                     value="<?php echo $row1["mooe_year"]; ?>" required name="mooe_year" size="50">
                         </tr>
 

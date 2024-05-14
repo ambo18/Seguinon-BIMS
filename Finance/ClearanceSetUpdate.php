@@ -81,7 +81,7 @@ session_start();
                             <div class="form-group col-md-4">
                                 <td><label for="purpose">Purpose</label></td>
 
-                                <td><input type="text" class="form-control" readonly
+                                <td><input type="text" class="form-control"
                                         value="<?php echo $row["purpose"]; ?>" required name="purpose" method="POST">
                                 </td>
                             </div>

@@ -1,4 +1,3 @@
-
 <?php
 include('connections.php');
 ?>
@@ -33,13 +32,13 @@ $largestocc= $oid= "";
 
 while ($row_edit = mysqli_fetch_assoc($get_record)){
 
-
   $db_res_fName = $row_edit["res_fName"];
     $db_res_mName = $row_edit["res_mName"];
     $db_res_lName = $row_edit["res_lName"];
     $db_suffix_ID = $row_edit["suffix_ID"];
     $db_gender_ID = $row_edit["gender_ID"];
     $db_res_Bday = $row_edit["res_Bday"];
+    $db_voter_status = $row_edit["voter_status"];
     $db_marital_ID = $row_edit["marital_ID"];
      $db_country_ID = $row_edit["country_ID"];
         $db_res_Height = $row_edit["res_Height"];
@@ -224,8 +223,11 @@ if ($_SERVER["REQUEST_METHOD"]== "POST"){
 ?>
 
 <?php
-if ($_SERVER["REQUEST_METHOD"]== "POST"){
- $file = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["image"]) && !empty($_FILES["image"]["tmp_name"])) {
+    $file = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
+} else {
+    // Handle case where no file is uploaded
+    $file = ""; // or any default value you prefer
 }
 ?>
 
@@ -235,7 +237,6 @@ if ($_SERVER["REQUEST_METHOD"]== "POST"){
  $nStatus =$_POST["new_status"];
 }
 ?>
-
 
 
 <?php
@@ -279,7 +280,6 @@ if (isset($db_res_contactType)) {
 $res_trabaho="";
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -306,21 +306,30 @@ $res_trabaho="";
 <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <style type="text/css">
-.thumb-image{
- float:left;width:250px;height: 200px;
- position:relative;
- padding:6px;
- margin-left: 50px;
-}
+  .thumb-image{
+  float:left;width:250px;height: 200px;
+  position:relative;
+  padding:6px;
+  margin-left: 50px;
+  }
 </style>
 
 <div class="clearfix"></div>
 <div class="col-lg-offset-4" id="image-holder">
-    </div>
+<?php
+    // Display existing image from the database
+    $get_image_query = mysqli_query($db, "SELECT res_Img FROM resident_detail WHERE res_ID='$user_id'");
+    $row_image = mysqli_fetch_assoc($get_image_query);
+    $existing_image = $row_image['res_Img'];
+    if (!empty($existing_image)) {
+        echo '<img src="data:image/jpeg;base64,' . base64_encode($existing_image) . '" class="thumb-image" />';
+    }
+    ?>
+</div>
      <div class="clearfix"></div>
 <div class="form-group col-lg-offset-5 col-md-4">
   <div class="upload">
-      <input type="file" name="image" id="image" />
+      <input type="file" name="image" id="image"/>
     </div>
    
 </div>
@@ -363,27 +372,27 @@ div.upload input {
   </div>
 
 
-    <div class="form-group col-md-3">
+  <div class="form-group col-md-4">
     <label for="res_suffix">Suffix</label>
-  <select  class="form-control" id="res_suffix" name="res_suffix">
-     <option style="display:none;"><?php echo  $db_res_suffixname ;?></option>
-   <?php
-          $res=mysqli_query($db,"SELECT * FROM ref_suffixname");
-        while ($row=mysqli_fetch_array($res))
-        {
+    <select  class="form-control" id="res_suffix" name="res_suffix">
+        <option style="display:none;"><?php echo  $db_res_suffixname ;?></option>
+      <?php
+            $res=mysqli_query($db,"SELECT * FROM ref_suffixname");
+          while ($row=mysqli_fetch_array($res))
+          {
+            ?>
+            <option><?php echo $row["suffix"];?></option>
+
+            <?php
+          }
+
           ?>
-          <option><?php echo $row["suffix"];?></option>
-
-          <?php
-        }
-
-        ?>
-</select>
+    </select>
   </div>
 
        
        
-  <div class="form-group col-md-2">
+  <div class="form-group col-md-4">
     <label for="res_gender">Sex</label>
   <select class="form-control" id="new_gender" name="new_gender">
     <option style="display:none;"><?php echo  $db_res_gender;?></option>
@@ -403,14 +412,21 @@ div.upload input {
 </select>
   </div>
  
-             <div class="form-group col-md-2">
+             <div class="form-group col-md-4">
       <label for="res_bdate">Birthdate</label>
     <input placeholder="Birthdate" class="form-control" type="date" onblur="getAge();"  id="res_bdate" name="new_bday" value="<?php echo $db_res_Bday; ?>"> <!-- onblur="(this.type='text')" -->
   </div>
 
-
+<div class="form-group col-md-4">
+  <label for="res_voter">Voter Status*</label>
+  <select required class="form-control" id="res_voter" name="new_voter_status">
+      <option style="display:none;"><?php echo $db_voter_status;?></option>
+      <option value="Registered">Registered</option>
+      <option value="Unregistered">Unregistered</option>
+  </select>
+</div>
           
-<div class="form-group col-md-2">
+<div class="form-group col-md-4">
     <label for="res_civilstatus">Civil status</label>
   <select class="form-control"  id="res_civilstatus" name="new_marital" value="<?php echo $db_marital_ID;?>">
      <option style="display:none;"><?php echo  $db_res_marital;?></option>
@@ -430,7 +446,7 @@ div.upload input {
 </div>          
           
      
-          <div class="form-group col-md-2">
+          <div class="form-group col-md-4">
       <label for="res_contacttype">Contact type</label>
   <select class="form-control" id="res_contacttype" name="res_contacttype"  onchange="maxLengthFunction()">
     <option style="display:none;"><?php echo  $db_res_contype; ?></option>
@@ -449,84 +465,34 @@ div.upload input {
 </select>
 </div>
 
-   <script>
- $(function () {
-        $("#res_contacttype").change(function () {
-            if ($(this).val() == "N/A") {
-                  document.getElementById("res_contactnum").disabled = true;
-            
-            }
-            else {
-                  document.getElementById("res_contactnum").disabled = false;
-            }
-        });
-    });
-</script> 
-
-
-<script type="text/javascript">
-   function maxLengthFunction()
-{
-
-   var ddl = document.getElementById("res_contacttype");
-   var strOption = ddl.options[ddl.selectedIndex].text
-
-   if(strOption == "Mobile")
-       document.getElementById("res_contactnum").maxLength="11";
-  if(strOption == "Home") 
-       document.getElementById("res_contactnum").maxLength="7";
-     if(strOption == "Work")
-       document.getElementById("res_contactnum").maxLength="11";
-  if(strOption == "Fax") 
-       document.getElementById("res_contactnum").maxLength="10";
-      if(strOption == "Etc") 
-       document.getElementById("res_contactnum").maxLength="11";
-}
-    </script>
-
-
-  <div class="clearfix"></div>
-<div class="form-group col-md-3">
+<div class="form-group col-md-4">
     <label for="res_contactnum">Contact</label>
     <input type="text" maxlength="11" class="form-control" id="res_contactnum" name="res_contactnum" value="<?php echo  $db_res_contactnumber; ?>">
   </div>
 
 
 
- <div class="form-group col-md-2">
+ <div class="form-group col-md-4">
       <label for="res_lname">Height</label>
     <input type="number" class="form-control" id="res_height" name="new_height" placeholder="Meter/Centimeter" value="<?php echo $db_res_Height; ?>">
   </div>
 
-  <div class="form-group col-md-2">
+  <div class="form-group col-md-4">
       <label for="res_lname">Weight</label>
     <input type="number" class="form-control" id="res_weight" name="new_weight" placeholder="Kilogram" value="<?php echo $db_res_Weight; ?>">
   </div>
 
 
           
-          <div class="form-group col-md-2">
+          <div class="form-group col-md-4">
       <label for="res_citizenship">Citizenship</label>
   <select class="form-control" id="res_citizenship" name="res_citizenship">
     <option style="display:none;"><?php echo   $db_res_citizenship; ?></option>
-   <?php
-          $res=mysqli_query($db,"SELECT * FROM ref_country");
-        while ($row=mysqli_fetch_array($res))
-        {
-          ?>
-          <option><?php echo $row["country_citizenship"];?></option>
-
-       
-
-          <?php
-        }
-
-        ?>
-
+    <option value="Filipino">Filipino</option>
 </select>
 </div>
           
-<div class="form-group col-md-3">
+<div class="form-group col-md-4">
     <label for="res_religion">Religion</label>
     <select class="form-control" id="res_religion" name="res_religion">
  <option style="display:none;"><?php echo  $db_res_religion; ?></option>
@@ -549,7 +515,7 @@ div.upload input {
           
           
 
-   <div class="form-group col-md-3">
+   <div class="form-group col-md-4">
       <label for="res_occupationstatus">Occupation status</label>
   <select class="form-control" id="new_occuStat" name="new_occuStat">
  <option style="display:none;"><?php echo  $db_res_occuStat;?></option>
@@ -592,9 +558,9 @@ div.upload input {
         });
     });
 </script>        
-     <div class="form-group col-md-3">
+     <div class="form-group col-md-4">
       <label for="mname">Occupation</label>
-    <select class="form-control" id="res_occupation" name="res_occupation">
+    <select class="form-control" id="res_occupation" name="res_occupation" required>
  <option style="display:none;"><?php echo  $db_res_occupation;?> </option>
         <?php
           $res=mysqli_query($db,"SELECT * FROM ref_occupation");
@@ -612,15 +578,15 @@ div.upload input {
  </select>
   </div>
 
-  <div class="form-group col-md-3">
+  <div class="form-group col-md-4">
      <label for="mname">Adding Occupation</label>
     <input type="text" maxlength="20" class="form-control" id="res_trabaho" name="res_trabaho" placeholder="Add Occupation" disabled>
   </div>
    <div class="clearfix"></div>
           <br>
-<br>  
+          <br>
           
-          <div class="form-group col-md-3">
+          <div class="form-group col-md-4">
       <label for="new_addressHouse">House number</label>
     <input type="text" maxlength="15" class="form-control" id="new_addressHouse" name="new_addressHouse" value="<?php echo   $db_res_house;?>" placeholder="House number">
   </div>
@@ -630,7 +596,7 @@ div.upload input {
     <input type="text" maxlength="15" class="form-control" id="new_addressStreet" name="new_addressStreet" value="<?php echo   $db_res_street;?>" placeholder="Street">
   </div>
 
-  <div class="form-group col-md-3">
+  <div class="form-group col-md-4">
       <label for="res_address">Status</label>
   <select class="form-control" id="new_address" name="new_status">
    <option>Active</option>
@@ -684,6 +650,7 @@ $new_lname = $_POST["new_lname"];
 $new_suffix = $res_suffix;
 $new_gender = $res_gender;
 $new_bday = $_POST["new_bday"];
+$new_voter_status = $_POST["new_voter_status"];
 $new_marital = $res_marital;
 $new_country = $res_countryID;
 $new_height = $_POST["new_height"];
@@ -717,7 +684,7 @@ If($new_gender){
     
     
     
-mysqli_query($db, "UPDATE resident_detail SET res_fName='$new_fname', res_mName='$new_mname', res_lName='$new_lname', suffix_ID='$new_suffix', gender_ID='$new_gender', res_Bday='$new_bday' , marital_ID='$new_marital', country_ID='$new_country' , religion_ID='$new_religion', occuStat_ID='$new_occuStat', res_Height='$new_height', res_Weight='$new_weight', occupation_ID='$new_occupation' , status='$new_status'  where res_ID = '$user_id'");
+mysqli_query($db, "UPDATE resident_detail SET res_fName='$new_fname', res_mName='$new_mname', res_lName='$new_lname', suffix_ID='$new_suffix', gender_ID='$new_gender', res_Bday='$new_bday', voter_status='$new_voter_status' , marital_ID='$new_marital', country_ID='$new_country' , religion_ID='$new_religion', occuStat_ID='$new_occuStat', res_Height='$new_height', res_Weight='$new_weight', occupation_ID='$new_occupation' , status='$new_status'  where res_ID = '$user_id'");
     
     
 mysqli_query($db,"UPDATE resident_address SET address_House_No='$new_addressHouse', address_Street_Name='$new_addressStreet' WHERE res_ID = '$user_id' ");
@@ -736,7 +703,7 @@ else{
       
       
     
-mysqli_query($db, "UPDATE resident_detail SET res_Img='$file',res_fName='$new_fname', res_mName='$new_mname', res_lName='$new_lname', suffix_ID='$new_suffix', gender_ID='$new_gender', res_Bday='$new_bday' , marital_ID='$new_marital', country_ID='$new_country' , religion_ID='$new_religion', occuStat_ID='$new_occuStat', res_Height='$new_height', res_Weight='$new_weight', occupation_ID='$new_occupation' , status='$new_status'  where res_ID = '$user_id'");
+mysqli_query($db, "UPDATE resident_detail SET res_Img='$file',res_fName='$new_fname', res_mName='$new_mname', res_lName='$new_lname', suffix_ID='$new_suffix', gender_ID='$new_gender', res_Bday='$new_bday', voter_status='$new_voter_status' , marital_ID='$new_marital', country_ID='$new_country' , religion_ID='$new_religion', occuStat_ID='$new_occuStat', res_Height='$new_height', res_Weight='$new_weight', occupation_ID='$new_occupation' , status='$new_status'  where res_ID = '$user_id'");
     
     
 mysqli_query($db,"UPDATE resident_address SET address_House_No='$new_addressHouse', address_Street_Name='$new_addressStreet' WHERE res_ID = '$user_id' ");
@@ -861,82 +828,40 @@ $(document).ready(function() {
 });
  </script>
 
- <script type="text/javascript">
-  $(function() {
+<script>
+ $(function () {
+        $("#res_contacttype").change(function () {
+            if ($(this).val() == "N/A") {
+                  document.getElementById("res_contactnum").disabled = true;
+            
+            }
+            else {
+                  document.getElementById("res_contactnum").disabled = false;
+            }
+        });
+    });
+</script> 
 
-  $('#res_fname').keydown(function (e) {
-  
-    if (e.shiftKey || e.ctrlKey || e.altKey) {
-    
-      e.preventDefault();
-      
-    } else {
-    
-      var key = e.keyCode;
-      
-      if (!((key == 8) || (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
-      
-        e.preventDefault();
-        
-      }
 
-    }
-    
-  });
-  
-});
-</script>
 <script type="text/javascript">
-  $(function() {
+   function maxLengthFunction()
+  {
 
-  $('#res_mname').keydown(function (e) {
-  
-    if (e.shiftKey || e.ctrlKey || e.altKey) {
-    
-      e.preventDefault();
-      
-    } else {
-    
-      var key = e.keyCode;
-      
-      if (!((key == 8) || (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
-      
-        e.preventDefault();
-        
-      }
+  var ddl = document.getElementById("res_contacttype");
+  var strOption = ddl.options[ddl.selectedIndex].text
 
-    }
-    
-  });
-  
-});
-</script>
-<script type="text/javascript">
-  $(function() {
-
-  $('#res_lname').keydown(function (e) {
-  
-    if (e.shiftKey || e.ctrlKey || e.altKey) {
-    
-      e.preventDefault();
-      
-    } else {
-    
-      var key = e.keyCode;
-      
-      if (!((key == 8) || (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
-      
-        e.preventDefault();
-        
-      }
-
-    }
-    
-  });
-  
-});
-</script>
-
+  if(strOption == "Mobile")
+      document.getElementById("res_contactnum").maxLength="11";
+  if(strOption == "Home") 
+        document.getElementById("res_contactnum").maxLength="7";
+      if(strOption == "Work")
+        document.getElementById("res_contactnum").maxLength="11";
+  if(strOption == "Fax") 
+        document.getElementById("res_contactnum").maxLength="10";
+      if(strOption == "Etc") 
+        document.getElementById("res_contactnum").maxLength="11";
+  }
+  </script>
    <br>
    <br>
  </body>

@@ -477,9 +477,6 @@ $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
           ISSUED AT: <span id="name-input"><?php echo $head_brgy_Name." ".$citymun_disp.","." ".$province_disp;?></span>.<br>
           O.R. NO. <span id="name-input"><?php echo $orNo;?></span><br>
         </div>
-        <div class="seal">
-          <i>NOTE: not valid without a seal</i>
-        </div>
 
         <h3><a href="javascript:genPDF();" data-html2canvas-ignore="true">Download PDF</a><h3>
 

@@ -1,52 +1,52 @@
-	.navbar {
-		padding-left: 10%;
-		padding-right: 10%;
-		font-family: Century Gothic;
-		font-size: 15px;	
-		}
-
-	#brand {
-		font-size: 20px;
-		color: #42f453;
+.navbar {
+	padding-left: 10%;
+	padding-right: 10%;
+	font-family: Century Gothic;
+	font-size: 15px;	
 	}
 
-	.form-group	 {	
-		font-style: Century Gothic;
-		position: relative;
-	}
+#brand {
+	font-size: 20px;
+	color: #42f453;
+}
 
-	
-	.btn {
-		text-align: center;
-	}
+.form-group	 {	
+	font-style: Century Gothic;
+	position: relative;
+}
 
-	h1{
-		font-family: Century Gothic;
 
-	}
+.btn {
+	text-align: center;
+}
 
-	body {
-		font-family: Century Gothic;
-	}
+h1{
+	font-family: Century Gothic;
 
-	#one {
-		padding-left: 10%;
-		padding-right: 10%;
-		font-family: Century Gothic;s
-		padding-top: 10px;
+}
 
-	}
+body {
+	font-family: Century Gothic;
+}
 
-	.form-control{
-		width: 80%;
+#one {
+	padding-left: 10%;
+	padding-right: 10%;
+	font-family: Century Gothic;
+	padding-top: 10px;
 
-	}
+}
 
-	.jumbotron{
-		padding-left: 20%;
-		padding-right: 20%;
-		margin-top: 10px;
-		background-color: white;
-		padding-bottom: 10%;
-	}
+.form-control{
+	width: 80%;
+
+}
+
+.jumbotron{
+	padding-left: 20%;
+	padding-right: 20%;
+	margin-top: 10px;
+	background-color: white;
+	padding-bottom: 10%;
+}
 

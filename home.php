@@ -11,23 +11,29 @@ include('db.php');
  	}
 ?>
 
+<!DOCTYPE html>
 <html>
-<title>Admin Panel</title>
-<link rel="shortcut icon" href="Picture/logo.png">
 
-<Style>
-body {
-	background-color: white;
-}
-</style>
 <head>
-<frameset rows="80%,5.5%" frameborder="0">
-<!-- <frame src="header.php" noresize="noresize"> -->
+    <title>Admin Panel</title>
+    <link rel="shortcut icon" href="Picture/seguinon_logo.png">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+    </style>
+</head>
 
-<frameset cols="20%,80%">
-<frame src="modules.php" name="FraLink">
-<frame src="Resident_Profiling\Dash\index.php" name="FraDisplay">
+<frameset rows="80%, 5%" frameborder="0">
+    <frameset cols="20%, 80%">
+        <frame src="modules.php" name="FraLink">
+        <frame src="Resident_Profiling\Dash\index.php" name="FraDisplay">
+    </frameset>
+    <frame src="footer.php" name="FraDisplay">
 </frameset>
-<frame src="footer.php" name="FraDisplay">
-</frameset>
-</head></html>
+
+</html>
+
+

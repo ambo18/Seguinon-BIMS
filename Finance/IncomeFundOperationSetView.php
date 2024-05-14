@@ -5,11 +5,34 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Management Information System</title>
+    <title>Barangay Information Management System</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/css/mis.css" rel="stylesheet">
     <link href="vendor/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="Style.css" type="text/css" rel="stylesheet">
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 5px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+
+        td.amount {
+            text-align: right;
+        }
+    </style>
 </head>
 
 <body style="margin-top: 5%;">
@@ -26,30 +49,6 @@
     <?php session_start();
 include("dbcon.php");
 ?>
-    <link href="Style.css" type="text/css" rel="stylesheet">
-
-
-    <style>
-    table {
-        border-collapse: collapse;
-        width: 50%;
-    }
-
-    th,
-    td {
-        text-align: left;
-        padding: 5px;
-    }
-
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-
-
-    td.amount {
-        text-align: right;
-    }
-    </style>
     <center>
         <?php
 		
@@ -105,7 +104,6 @@ $iid = $row["income_id"];?>
 
             </div>
         </div>
-        </table>
 
         <script src="jquery/jquery-3.3.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -131,5 +129,5 @@ $iid = $row["income_id"];?>
 
     </center>
 
-    <body>
-        <html>
+</body>
+<html>

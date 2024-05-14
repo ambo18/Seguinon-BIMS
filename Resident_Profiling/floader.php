@@ -290,7 +290,7 @@ $muser_id=$user_id;
         
         <br>
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button type="button" class="btn btn-danger col-lg-offset-0" onclick="location.href = 'resident.php';"  >Back
+        <button type="button" class="btn btn-success col-lg-offset-0" onclick="location.href = 'resident.php';"  >Back
   <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 </button><br><br>
    

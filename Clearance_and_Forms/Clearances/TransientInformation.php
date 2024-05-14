@@ -280,9 +280,6 @@ $sqlsli = "INSERT INTO form_release (res_ID, form_ID, purpose_ID, release_date)
 
               </div>
             </p>
-        <div class="seal">
-          <i>NOTE: not valid without a seal</i>
-        </div>
      </div>
     </div>
     <h3><a href="javascript:genPDF();" data-html2canvas-ignore="true">Download PDF</a><h3>

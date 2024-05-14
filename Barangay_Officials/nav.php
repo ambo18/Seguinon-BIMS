@@ -13,7 +13,6 @@
 <link href="style/style.css" rel="stylesheet" type="text/css">
 <ul class="nav navbar-nav">
 
-	<li><a href="index.php" id="lia">Home</a></li>
 <?php 
 	if ($_SESSION['position']=='Barangay Secretary')
 	echo'

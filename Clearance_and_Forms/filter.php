@@ -50,12 +50,12 @@ $s1="";?>
                              
                               $startd = $_POST['from'];
                               $endd = $_POST['to'];
-                              $sss="SELECT res_fName, res_mName, res_lName, fcl.clearance_form, fcs.purpose, fcs.price, release_Date
-                                        FROM form_release
-                                        LEFT JOIN  resident_detail rd ON form_release.res_ID = rd.res_ID
-                                        LEFT JOIN finance_clearance_set fcs ON form_release.form_ID = fcs.clearance_id
-                                        LEFT JOIN finance_clearance_list fcl ON fCL.clearance_id = fcs.clearance_id
-                                        WHERE release_Date BETWEEN '$startd' AND '$endd'";
+                              $sss = "SELECT rd.res_fName, rd.res_mName, rd.res_lName, fcl.clearance_form, fcs.purpose, fcs.price, form_release.release_Date
+                                      FROM form_release
+                                      LEFT JOIN resident_detail rd ON form_release.res_ID = rd.res_ID
+                                      LEFT JOIN finance_clearance_set fcs ON form_release.form_ID = fcs.clearance_id
+                                      LEFT JOIN finance_clearance_list fcl ON fcs.clearance_id = fcl.clearance_id
+                                      WHERE form_release.release_Date BETWEEN '$startd' AND '$endd'";
 
                               $query = mysqli_query($db, $sss);
                               $count = mysqli_num_rows($query);

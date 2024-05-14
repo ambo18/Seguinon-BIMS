@@ -6,9 +6,6 @@ body {
 	font-family: calibri;
 	color: white;
 }
-hr {
-	height:3px;
-	}
 </style>
 <center>
 <script type="text/javascript">

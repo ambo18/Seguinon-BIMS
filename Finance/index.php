@@ -51,14 +51,13 @@ session_start();
 			display: inline-block;
 			color: white;
 			text-align: center;
-			padding: 18px 20px;
+			padding: 14px 16px;
 			text-decoration: none;
 			
 		}
 
 		a {
-			margin: 0px 10px;
-			padding: 9px 30px;
+			margin: 0px 3px;
 			text-decoration: none;
 			text-transform: uppercase;
 			transition: .3s;

@@ -35,7 +35,7 @@ $largest_contact= $cid= "";
                                     $cid= $largest_contact+1;
                                  
  
-$res_fname = $res_mname = $res_lname = $res_suffix = $res_gender = $res_bdate = $res_bdate = $res_civilstatus= $res_contactnum =$res_id = $res_contacttype = $res_religion = $res_occupationstatus= $res_occupation =$res_height= $res_weight= $res_citizenship=  $res_houseno=   $res_purokno= $res_region= $res_address= $res_brgy="" ;
+$res_fname = $res_mname = $res_lname = $res_suffix = $res_gender = $res_bdate = $res_bdate = $voter_status = $res_civilstatus= $res_contactnum =$res_id = $res_contacttype = $res_religion = $res_occupationstatus= $res_occupation =$res_height= $res_weight= $res_citizenship=  $res_houseno=   $res_purokno= $res_region= $res_address= $res_brgy="" ;
 
  $res_street ="";
 
@@ -92,6 +92,10 @@ if ($_SERVER["REQUEST_METHOD"]== "POST"){
  if ($_SERVER["REQUEST_METHOD"]== "POST"){
 $res_bdate=$_POST["res_bdate"];
         }
+
+if ($_SERVER["REQUEST_METHOD"]== "POST"){
+  $voter_status=$_POST["voter_status"];
+          }
  
 
 if ($_SERVER["REQUEST_METHOD"]== "POST"){
@@ -235,7 +239,7 @@ if ($_SERVER["REQUEST_METHOD"]== "POST"){
        
    
  
-If($rid && $res_fname  && $res_lname  && $res_gender && $res_bdate && $res_civilstatus  && $res_religion  && $res_citizenship){
+If($rid && $res_fname  && $res_lname  && $res_gender &&  $voter_status && $res_civilstatus  && $res_religion  && $res_citizenship){
   
     
      if($res_trabaho){
@@ -244,7 +248,7 @@ If($rid && $res_fname  && $res_lname  && $res_gender && $res_bdate && $res_civil
      }
     
         $query=mysqli_query($db,"INSERT INTO resident_detail(res_ID,res_Img, 
-res_fName, res_mName,res_lName,suffix_ID, gender_ID, res_Bday, marital_ID,religion_ID,res_Height,res_Weight, occuStat_ID,occupation_ID,country_ID,Status) VALUES('$rid','$file','$res_fname','$res_mname','$res_lname','$res_suffix','$res_gender','$res_bdate','$res_civilstatus','$res_religion','$res_height', '$res_weight','$res_occupationstatus','$res_occupation','$res_citizenship','Active') ");
+res_fName, res_mName,res_lName,suffix_ID, gender_ID, res_Bday, voter_status, marital_ID,religion_ID,res_Height,res_Weight, occuStat_ID,occupation_ID,country_ID,Status) VALUES('$rid','$file','$res_fname','$res_mname','$res_lname','$res_suffix','$res_gender','$res_bdate', '$voter_status', '$res_civilstatus','$res_religion','$res_height', '$res_weight','$res_occupationstatus','$res_occupation','$res_citizenship','Active') ");
     echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
     
     
@@ -277,7 +281,7 @@ res_fName, res_mName,res_lName,suffix_ID, gender_ID, res_Bday, marital_ID,religi
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/css/mis.css" rel="stylesheet">
-      <link href="vendor/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/css/dataTables.bootstrap.min.css" rel="stylesheet">
       
       
       
@@ -354,8 +358,6 @@ div.upload input {
 }
 </style>
 
-
-
 <script>
     function numbersOnly(input){
         var regex=/[^0-9]/gi;
@@ -430,13 +432,13 @@ div.upload input {
   </div>
 
 <div class="form-group col-md-4">
-  <label for="res_voter">Voter Status*</label>
-  <input type="text" readonly maxlength="14" class="form-control" id="res_voter" placeholder="Voter Status" >
+  <label for="voter_status">Voter Status*</label>
+  <select required class="form-control" id="voter_status" name="voter_status" placeholder="Voter Status">
+      <option value="" disabled selected>Voters Status</option>
+      <option value="Registered">Registered</option>
+      <option value="Unregistered">Unregistered</option>
+  </select>
 </div>
-          
-          
-          
- 
           
 <div class="form-group col-md-4">
     <label for="res_civilstatus">Civil status*</label>
@@ -457,46 +459,28 @@ div.upload input {
 </div>          
           
 
-            <div class="form-group col-md-4">
-      <label for="res_contacttype">Contact type</label>
+<div class="form-group col-md-4">
+  <label for="res_contacttype">Contact type</label>
   <select class="form-control" id="res_contacttype" name="res_contacttype" onchange="maxLengthFunction()">
     <option value="" disabled selected>Contact type</option>
-   <?php
-          $res=mysqli_query($db,"SELECT * FROM ref_contact");
-        while ($row=mysqli_fetch_array($res))
-        {
-          ?>
-          <option><?php echo $row["contactType_Name"];?></option>
+    <?php
+    $res=mysqli_query($db,"SELECT * FROM ref_contact");
+    while ($row=mysqli_fetch_array($res))
+    {
+    ?>
+    <option><?php echo $row["contactType_Name"];?></option>
 
-          <?php
-        }
+    <?php
+    }
 
-        ?>
-</select>
-</div> 
-          
-          
-            <script>
- $(function () {
-        $("#res_contacttype").change(function () {
-            if ($(this).val() == "N/A") {
-                  document.getElementById("res_contactnum").disabled = true;
-            
-            }
-            else {
-                  document.getElementById("res_contactnum").disabled = false;
-            }
-        });
-    });
-</script>    
+    ?>
+  </select>
+</div>    
           
 <div class="form-group col-md-4">
-    <label for="res_contactnum">Contact</label>
-    <input  type="text" maxlength="11" class="form-control" id="res_contactnum" name="res_contactnum" onkeyup="numbersOnly(this)" placeholder="Contact number">
-  </div>
-
-       
-          
+  <label for="res_contactnum">Contact</label>
+  <input  type="text" maxlength="11" class="form-control" id="res_contactnum" name="res_contactnum" onkeyup="numbersOnly(this)" placeholder="Contact number">
+</div>       
 
 <div class="form-group col-md-4">
       <label for="res_mname">Height</label><label ><font size="2">&nbsp; (Optional)</font></label>
@@ -617,7 +601,7 @@ div.upload input {
     });
 </script>        
 
-          <div class="form-group col-md-3">
+          <div class="form-group col-md-4">
      <label for="mname">Adding Occupation</label>
     <input type="text" maxlength="20" class="form-control" id="res_trabaho" name="res_trabaho" placeholder="Add Occupation" disabled>
   </div>
@@ -848,82 +832,18 @@ $(document).ready(function() {
     $('#res_bdate').attr('max', maxDate);
 });
  </script>
+
 <script type="text/javascript">
   $(function() {
-
-  $('#res_fname').keydown(function (e) {
-  
-    if (e.shiftKey || e.ctrlKey || e.altKey) {
-    
-      e.preventDefault();
-      
-    } else {
-    
-      var key = e.keyCode;
-      
-      if (!((key == 8) || (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
-      
-        e.preventDefault();
-        
-      }
-
-    }
-    
+      $('#res_fname, #res_mname, #res_lname').keydown(function (e) {
+          var key = e.keyCode;
+          // Allow key codes for letters, space, delete, arrow keys, and tab
+          if (!((key == 8) || (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90) || key == 9)) {
+              e.preventDefault();
+          }
+      });
   });
-  
-});
 </script>
-<script type="text/javascript">
-  $(function() {
-
-  $('#res_mname').keydown(function (e) {
-  
-    if (e.shiftKey || e.ctrlKey || e.altKey) {
-    
-      e.preventDefault();
-      
-    } else {
-    
-      var key = e.keyCode;
-      
-      if (!((key == 8) || (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
-      
-        e.preventDefault();
-        
-      }
-
-    }
-    
-  });
-  
-});
-</script>
-<script type="text/javascript">
-  $(function() {
-
-  $('#res_lname').keydown(function (e) {
-  
-    if (e.shiftKey || e.ctrlKey || e.altKey) {
-    
-      e.preventDefault();
-      
-    } else {
-    
-      var key = e.keyCode;
-      
-      if (!((key == 8) || (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
-      
-        e.preventDefault();
-        
-      }
-
-    }
-    
-  });
-  
-});
-</script>
-      
       
       <script type="application/javascript">
 
@@ -957,5 +877,19 @@ $(document).ready(function() {
        document.getElementById("res_contactnum").maxLength="11";
 }
     </script>
+
+<script>
+ $(function () {
+        $("#res_contacttype").change(function () {
+            if ($(this).val() == "N/A") {
+                  document.getElementById("res_contactnum").disabled = true;
+            
+            }
+            else {
+                  document.getElementById("res_contactnum").disabled = false;
+            }
+        });
+    });
+</script> 
   </body>  
 </html>
