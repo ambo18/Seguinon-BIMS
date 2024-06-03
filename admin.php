@@ -4,14 +4,34 @@ session_start();
 <html>
 <link rel="stylesheet" href="Css/admin.css">
 <title>Account</title>
+<style>
+	.btn {
+		width:70%;
+		display: inline-block;
+		padding: 8px 16px;
+		margin: 4px 2px;
+		border: none;
+		background-color: #3d4ee7; /* Default background color */
+		color: white;
+		text-align: center;
+		text-decoration: none;
+		font-size: 16px;
+		cursor: pointer;
+		border-radius: 4px;
+		transition: background-color 0.3s ease; /* Smooth transition */
+	}
 
+	.btn:hover {
+		background-color: #758bff; /* Hover background color */
+	}
+</style>
 </head>
 
 <body>
 	<section class="left">
-<div class="banner">
-				ACCOUNT
-			</div>
+		<div class="banner">
+			ACCOUNT
+		</div>
 <center>
 <form method="post">
 
@@ -66,7 +86,7 @@ if (isset($_POST['submit']))
 				echo "<tr align='center'>";
 				echo"<td><font color='black'>" .$test['Fullname']."</font></td>";
 				echo"<td><font color='black'>" .$test['Username']."</font></td>";
-				echo"<td><font color='black'>". $test['Password']. "</font></td>";
+				echo"<td><font color='black'>*********</font></td>";
 				echo"<td><font color='black'>". $test['Position']. "</font></td>";
 				echo"<td><a href ='adminedit.php?ID=$id' class='btn btn-info btn-xs' onclick='return myFunction()'>Edit</a></td>";
 
