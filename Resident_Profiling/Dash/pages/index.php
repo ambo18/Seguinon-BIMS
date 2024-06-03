@@ -119,6 +119,25 @@
     <script src="../js/loader1.js"></script>
 
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('../../../Picture/dark-bg2.jpg');
+            background-size: cover; /* Ensure the background image covers the entire body */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Prevent the background image from repeating */
+            position: relative; /* Set position to relative to allow layering */
+        }
+
+        .overlay {
+            position: absolute; /* Position the overlay layer relative to its containing block */
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(255, 255, 255, 0.7); /* White color with opacity */
+        }
+
         .chart-container {
             width: 49.7%;
             height: 300px;
@@ -138,6 +157,8 @@
 </head>
 
 <body>
+
+    <div class="overlay"></div>
 
     <div class="row">
         <div class="col-lg-12">
