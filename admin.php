@@ -5,6 +5,7 @@ session_start();
 <link rel="stylesheet" href="Css/admin.css">
 <title>Account</title>
 <style>
+
 	.btn {
 		width:70%;
 		display: inline-block;
@@ -24,6 +25,16 @@ session_start();
 	.btn:hover {
 		background-color: #758bff; /* Hover background color */
 	}
+
+	table {
+            width: 90%;
+            border-collapse: collapse;
+        }
+
+	th, td {
+            border: 2px solid #758bff;
+            padding: 8px;
+        }
 </style>
 </head>
 
@@ -56,11 +67,11 @@ if (isset($_POST['submit']))
 
 <table width="90%" border="2" style="border-collapse:collapse;">
 	<thead> <tr>
-			<th> Fullname </th>
-			<th> Username </th>
-			<th> Password </th>
-			<th> Position </th>
-			<th colspan="2">Action</th>
+			<th style="text-align: center;"> Fullname </th>
+			<th style="text-align: center;"> Username </th>
+			<th style="text-align: center;"> Password </th>
+			<th style="text-align: center;"> Position </th>
+			<th colspan="2" style="text-align: center;">Action</th>
 	</tr>
 </thead>
 	<script>
@@ -84,10 +95,10 @@ if (isset($_POST['submit']))
 			{
 				$id = $test['ID'];
 				echo "<tr align='center'>";
-				echo"<td><font color='black'>" .$test['Fullname']."</font></td>";
-				echo"<td><font color='black'>" .$test['Username']."</font></td>";
-				echo"<td><font color='black'>*********</font></td>";
-				echo"<td><font color='black'>". $test['Position']. "</font></td>";
+				echo"<td style='text-align: center;'><font color='black'>" .$test['Fullname']."</font></td>";
+				echo"<td style='text-align: center;'><font color='black'>" .$test['Username']."</font></td>";
+				echo"<td style='text-align: center;'><font color='black'>*****</font></td>";
+				echo"<td style='text-align: center;'><font color='black'>". $test['Position']. "</font></td>";
 				echo"<td><a href ='adminedit.php?ID=$id' class='btn btn-info btn-xs' onclick='return myFunction()'>Edit</a></td>";
 
 				echo "</tr>";
