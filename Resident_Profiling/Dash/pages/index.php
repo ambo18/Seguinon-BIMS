@@ -250,13 +250,17 @@
             <div class="panel panel-cyan">
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col-xs-3">
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge"><?php echo $sk_voter; ?></div>
-                            <div>SK Voter(s)</div>
-                            <div><strong>Registered: <?php echo $total_sk_registered_voters; ?></div>
-                            <div><strong>Unregistered: <?php echo $total_sk_unregistered_voters; ?></strong></div>
+                        <div class="col-xs-12">
+                            <div class="row"> <!-- Wrap the left text in a row -->
+                                <div class="col-xs-5 text-left"> <!-- Decrease the column size -->
+                                    <div><strong>Registered: <?php echo $total_sk_registered_voters; ?></strong></div>
+                                    <div><strong>Unregistered: <?php echo $total_sk_unregistered_voters; ?></strong></div>
+                                </div>
+                                <div class="col-xs-7 text-right"> <!-- Adjust the column size as per your preference -->
+                                    <div class="huge"><?php echo $sk_voter; ?></div>
+                                    <div>SK Voter(s)</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -282,18 +286,21 @@
         <div class="col-md-4">
         </div>
 
-        <div class=" col-md-4">
+        <div class="col-md-4">
             <div class="panel panel-rose">
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col-xs-3">
-
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge"><?php echo $barangay_voter; ?></div>
-                            <div>Barangay Voter(s)</div>
-                            <div><strong>Registered: <?php echo $total_barangay_registered_voters; ?></strong></div>
-                            <div><strong>Unregistered: <?php echo $total_barangay_unregistered_voters; ?></strong></div>
+                        <div class="col-xs-12">
+                            <div class="row"> <!-- Wrap the left text in a row -->
+                                <div class="col-xs-5 text-left"> <!-- Decrease the column size -->
+                                    <div><strong>Registered: <?php echo $total_barangay_registered_voters; ?></strong></div>
+                                    <div><strong>Unregistered: <?php echo $total_barangay_unregistered_voters; ?></strong></div>
+                                </div>
+                                <div class="col-xs-7 text-right"> <!-- Adjust the column size as per your preference -->
+                                    <div class="huge"><?php echo $barangay_voter; ?></div>
+                                    <div>Barangay Voter(s)</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
