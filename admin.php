@@ -18,31 +18,31 @@ session_start();
 <?php
 
 if (isset($_POST['submit']))
-	{	   
+	{
 	include 'db.php';
 
 			 		$fullname=$_POST['fullname'] ;
 			 		$username=$_POST['username'] ;
-					$password= $_POST['password'] ;					
+					$password= $_POST['password'] ;
 					$position= $_POST['position'] ;
-												
-		 mysqli_query($db,"INSERT INTO `accounts`(Fullname ,Username, Emailaddress, Password, Position) 
-		 VALUES ('$fullname','$username','$emailaddress',,'$password','$position')"); 
-				
-				
+
+		 mysqli_query($db,"INSERT INTO `accounts`(Fullname ,Username, Emailaddress, Password, Position)
+		 VALUES ('$fullname','$username','$emailaddress',,'$password','$position')");
+
+
 	        }
 ?>
 </form>
 
 <table width="90%" border="2" style="border-collapse:collapse;">
 	<thead> <tr>
-			<th> Fullname </th> 
-			<th> Username </th> 
+			<th> Fullname </th>
+			<th> Username </th>
 			<th> Password </th>
 			<th> Position </th>
 			<th colspan="2">Action</th>
 	</tr>
-</thead>	
+</thead>
 	<script>
 				function myFunction() {
 					var r = confirm("Are you sure?");
@@ -56,24 +56,24 @@ if (isset($_POST['submit']))
 			</script>
 			<?php
 			include("db.php");
-			
-				
+
+
 			$result=mysqli_query($db,"SELECT * FROM accounts WHERE id=1");
-	if($_SESSION['position']=='Barangay Secretary'){		
+	if($_SESSION['position']=='Barangay Secretary'){
 			while($test = mysqli_fetch_array($result))
 			{
-				$id = $test['ID'];	
-				echo "<tr align='center'>";	
+				$id = $test['ID'];
+				echo "<tr align='center'>";
 				echo"<td><font color='black'>" .$test['Fullname']."</font></td>";
 				echo"<td><font color='black'>" .$test['Username']."</font></td>";
 				echo"<td><font color='black'>". $test['Password']. "</font></td>";
-				echo"<td><font color='black'>". $test['Position']. "</font></td>";	
-				echo"<td> <a href ='adminedit.php?ID=$id'onclick='return myFunction()'>Edit</a>";
-									
+				echo"<td><font color='black'>". $test['Position']. "</font></td>";
+				echo"<td><a href ='adminedit.php?ID=$id' class='btn btn-info btn-xs' onclick='return myFunction()'>Edit</a></td>";
+
 				echo "</tr>";
 			} //while
 		} //if
-		
+
 			mysqli_close($db);
 			?>
 </section>

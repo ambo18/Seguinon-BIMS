@@ -121,7 +121,7 @@
     <style>
         .chart-container {
             width: 49.7%;
-            height: 800px;
+            height: 300px;
             display: inline-block;
             background-color: #f8f8f8;
         }
@@ -148,7 +148,7 @@
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
-    <div class="row">
+    <div class="row" style="padding: 50px;">
         <div class="col-md-12">
             <div class="panel panel-info">
                 <div class="panel-heading">

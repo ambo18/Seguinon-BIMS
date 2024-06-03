@@ -16,7 +16,7 @@
 	    <body style="margin-top: 5%;">
 	        <br>
 	        <div class="head">
-	            <font size="5">View Records</font>
+	            <font size="6">View Records</font>
 	        </div>
 	        <br><br>
 	        <center>
