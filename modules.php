@@ -140,6 +140,10 @@ $data = mysqli_fetch_array($z);
         <a href="Report/viewreport.php" target="FraDisplay">
             <img src="Icon/report.png" style="float:left" width="29">&nbsp;Reports
         </a>
+
+        <a href="Resident_Profiling/Dash/pages/map/index.html" target="FraDisplay">
+            <img src="Icon/report.png" style="float:left" width="29">&nbsp;Map
+        </a>
     
         <b><div class="holder"><b></b></div>
         <a href="admin.php" target="FraDisplay">
