@@ -342,6 +342,9 @@ echo'
 </div>
 
 <style type="text/css">
+  body {
+            background-color: #FFFFFF;
+        }
   div.upload {
     width: 113px;
     height: 29px;
