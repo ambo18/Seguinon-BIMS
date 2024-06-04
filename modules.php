@@ -142,7 +142,7 @@ $data = mysqli_fetch_array($z);
         </a>
 
         <a href="Resident_Profiling/Dash/pages/map/index.html" target="FraDisplay">
-            <img src="Icon/report.png" style="float:left" width="29">&nbsp;Map
+            <img src="Icon/icons8-map-marker.png" style="float:left" width="29">&nbsp;Map
         </a>
     
         <b><div class="holder"><b></b></div>

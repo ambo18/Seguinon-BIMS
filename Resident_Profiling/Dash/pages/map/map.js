@@ -14,7 +14,7 @@ mapTypeIds.push("WebStorageMyGmap");
 
 var map = new google.maps.Map(element, {
     center: new google.maps.LatLng(11.1793, 125.6068),
-    zoom: 15,
+    zoom: 13,
     mapTypeId: "MyGmap",
     mapTypeControlOptions: {
         mapTypeIds: mapTypeIds,
