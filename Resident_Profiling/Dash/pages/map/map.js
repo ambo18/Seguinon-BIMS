@@ -64,12 +64,15 @@ map.mapTypes.set("LocalMyGmap", new google.maps.ImageMapType({
 map.mapTypes.set("WebStorageMyGmap", new google.maps.ImageMapType({
     getTileUrl: function(coord, zoom) {
         var image = getWebStorageTileImgSrc(coord, zoom);
-        return image ? image :  getGmapTileImgSrc(coord, zoom);
+        return image ? image : getGmapTileImgSrc(coord, zoom);
     },
     tileSize: new google.maps.Size(256, 256),
     name: "WebStorageMyGmap",
     maxZoom: 15
 }));
+
+// Create an InfoWindow instance
+var infoWindow = new google.maps.InfoWindow();
 
 // Add a custom marker at the specified coordinates
 var marker = new google.maps.Marker({
@@ -81,21 +84,26 @@ var marker = new google.maps.Marker({
     }
 });
 
-// Add click listener to the map
+// Add click listener to the marker to show InfoWindow
+google.maps.event.addListener(marker, 'click', function() {
+    infoWindow.setContent('<img src="../../../../Picture/plaza.jpg" style="height: 100px; width: auto; padding: 10px; border-radius: 2px;"> <br> Seguinon <br> Salcedo <br> Eastern Samar <br> Philippines <br> 6807');
+    infoWindow.open(map, marker);
+});
+
+// Add click listener to the map to add a marker and show InfoWindow
 google.maps.event.addListener(map, 'click', function(point) {
-    var marker = new google.maps.Marker({
+    var newMarker = new google.maps.Marker({
         position: point.latLng,
         map: map
     });
 
-    google.maps.event.addListener(marker, 'dblclick', function() {
-        marker.setMap(null);
+    google.maps.event.addListener(newMarker, 'dblclick', function() {
+        newMarker.setMap(null);
     });
 
-    google.maps.event.addListener(marker, 'click', function() {
-        new google.maps.InfoWindow({
-            content: 'lat: ' + point.latLng.lat() + '<br>lng:' + point.latLng.lng()
-        }).open(map, marker);
+    google.maps.event.addListener(newMarker, 'click', function() {
+        infoWindow.setContent('lat: ' + point.latLng.lat() + '<br>lng:' + point.latLng.lng());
+        infoWindow.open(map, newMarker);
     });
 });
 
@@ -124,7 +132,7 @@ function CustomControl(controlDiv, map, title, handler) {
 
 var clearWebStorageDiv = document.createElement('DIV');
 var clearWebStorageButton = new CustomControl(clearWebStorageDiv, map,
-    'Clear Web Storage',  clearWebStorage);
+    'Clear Web Storage', clearWebStorage);
 
 var prepareWebStorageDiv = document.createElement('DIV');
 var prepareWebStorageButton = new CustomControl(prepareWebStorageDiv, map,
