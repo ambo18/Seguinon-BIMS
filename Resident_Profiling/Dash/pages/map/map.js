@@ -71,6 +71,17 @@ map.mapTypes.set("WebStorageMyGmap", new google.maps.ImageMapType({
     maxZoom: 15
 }));
 
+// Add a custom marker at the specified coordinates
+var marker = new google.maps.Marker({
+    position: new google.maps.LatLng(11.173787587990624, 125.61057604040437),
+    map: map,
+    icon: {
+        url: 'Marker.png', // Path to your custom marker image
+        scaledSize: new google.maps.Size(200, 200) // Adjust the size as needed
+    }
+});
+
+// Add click listener to the map
 google.maps.event.addListener(map, 'click', function(point) {
     var marker = new google.maps.Marker({
         position: point.latLng,
